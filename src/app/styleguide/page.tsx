@@ -79,7 +79,7 @@ const inkScale = [
 
 export default function StyleguidePage() {
   return (
-    <div className="fixed inset-0 z-40 overflow-y-auto bg-trust-bg text-ink-700">
+    <>
       {/* ─────────── PROTOTYPE NAVBAR ─────────── */}
       <header className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-trust-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -480,6 +480,6 @@ export default function StyleguidePage() {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 }

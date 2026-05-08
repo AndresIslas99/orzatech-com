@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/layout/WhatsAppButton";
-import LeadMagnet from "@/components/layout/LeadMagnet";
+import SiteChrome from "@/components/layout/SiteChrome";
 import { SITE, CONTACT } from "@/lib/constants";
 
 const geistSans = Geist({
@@ -101,23 +98,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased bg-bg-deep text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
-        <div className="min-h-screen bg-bg-deep text-white overflow-x-hidden">
-          {/* Background grid */}
-          <div className="fixed inset-0 bg-grid-pattern pointer-events-none" />
-
-          {/* Decorative ambient orbs (industrial blue + amber accent) */}
-          <div className="fixed top-20 left-10 w-72 h-72 bg-eng-blue-500/8 rounded-full blur-3xl pointer-events-none" />
-          <div className="fixed bottom-20 right-10 w-96 h-96 bg-eng-blue-600/6 rounded-full blur-3xl pointer-events-none" />
-          <div className="fixed top-1/3 right-1/4 w-64 h-64 bg-amber-500/3 rounded-full blur-3xl pointer-events-none" />
-
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <WhatsAppButton />
-          <LeadMagnet />
-        </div>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
