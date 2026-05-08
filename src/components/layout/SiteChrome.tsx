@@ -13,7 +13,15 @@ const NO_CHROME_ROUTES = ["/styleguide"];
 
 // Routes already migrated to the trust-first light theme.
 // Add new routes here as they are migrated.
-const TRUST_ROUTES = ["/"];
+const TRUST_ROUTES = [
+  "/",
+  "/industria",
+  "/software",
+  "/pulse",
+  "/proyectos",
+  "/contacto",
+  "/nosotros",
+];
 
 function isExactOrChild(pathname: string, route: string) {
   if (route === "/") return pathname === "/";

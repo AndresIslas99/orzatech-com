@@ -1,165 +1,139 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import HeroVertical from "@/components/sections/HeroVertical";
-import CTASection from "@/components/sections/CTASection";
-import PricingTable from "@/components/ui/PricingTable";
-import ProcessStepComponent from "@/components/ui/ProcessStep";
-import SectionHeader from "@/components/ui/SectionHeader";
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import Image from "next/image";
-import { XCircle, CheckCircle, Check } from "lucide-react";
 import {
   softwareSubServices,
   pricingTiers,
   processSteps,
   problemSolutions,
 } from "@/data/software-services";
+import { projects } from "@/data/projects";
+import TrustPageHero from "@/components/trust/TrustPageHero";
+import TrustSectionHeader from "@/components/trust/TrustSectionHeader";
+import TrustServiceCard from "@/components/trust/TrustServiceCard";
+import TrustProblemList from "@/components/trust/TrustProblemList";
+import TrustPricingGrid from "@/components/trust/TrustPricingGrid";
+import TrustProcessSteps from "@/components/trust/TrustProcessSteps";
+import TrustTestimonialBlock from "@/components/trust/TrustTestimonialBlock";
+import TrustCTASection from "@/components/trust/TrustCTASection";
 
 export const metadata = generatePageMetadata({
-  title: "Software & Inteligencia Artificial para Empresas",
+  title: "Software & IA industrial · Visibilidad operativa real",
   description:
-    "Agentes de IA, CRM automatizado, dashboards en tiempo real e integracion de sistemas. Soluciones de software con inteligencia artificial para empresas en Mexico.",
+    "Dashboards en tiempo real, telemetría industrial, agentes de IA y CRM automatizado. Implementación en menos de 30 días con precios transparentes. Empresa SAPI de CV.",
   keywords: [
-    "agentes IA",
+    "software industrial México",
+    "dashboards tiempo real",
+    "agentes IA WhatsApp",
+    "telemetría industrial",
     "CRM automatizado",
-    "dashboards",
-    "software IA Mexico",
-    "inteligencia artificial empresas",
-    "automatizacion procesos",
+    "visibilidad operativa",
   ],
   path: "/software",
 });
 
+const aiAgentProject = projects.find((p) => p.slug === "agente-ia-crm")!;
+
 export default function SoftwarePage() {
   return (
     <>
-      <HeroVertical
-        tag="Fase 1: Visibilidad Operativa"
-        title="Ve tu operacion"
-        highlight="en tiempo real."
-        subtitle="Desde tu planta hasta tu CRM."
-        description="Telemetria industrial, dashboards conectados, agentes de IA y CRM automatizado. Ya sea que operes una planta, un almacen o un negocio en crecimiento, empezamos con datos. Implementacion en menos de 30 dias."
-        primaryCta={{ label: "Agendar Diagnostico Gratuito", href: "/contacto" }}
-        secondaryCta={{ label: "Ver Precios", href: "#precios" }}
+      <TrustPageHero
+        eyebrow="Software & IA · Fase 1: visibilidad operativa"
+        title={
+          <>
+            Ve tu operación en tiempo real.{" "}
+            <span className="text-accent-500">Antes de tocar el hardware.</span>
+          </>
+        }
+        description="Telemetría industrial, dashboards conectados, agentes de IA por WhatsApp y CRM automatizado. Implementación en menos de 30 días con precios públicos."
+        secondaryCta={{ label: "Ver precios", href: "#precios" }}
+        trustItems={[
+          { label: "Implementación < 30 días" },
+          { label: "Precios transparentes" },
+          { label: "Sin contratos amarrados" },
+        ]}
       />
 
       {/* Problem → Solution */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-6">
-          <ScrollReveal>
-            <SectionHeader
-              tag="EL PROBLEMA"
-              title="¿Tu operacion tiene estos"
-              highlight="sintomas?"
-            />
-          </ScrollReveal>
-
-          <div className="space-y-4">
-            {problemSolutions.map((item, i) => (
-              <ScrollReveal key={item.problem} delay={i * 60}>
-                <div
-                  className="grid md:grid-cols-2 gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/10"
-                >
-                  <div className="flex items-start gap-3">
-                    <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                    <p className="text-white/70">{item.problem}</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
-                    <p className="text-white/90 font-medium">{item.solution}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+      <section className="section-light py-20">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <TrustSectionHeader
+            eyebrow="¿Estás aquí?"
+            title="Síntomas que escuchamos en cada planta."
+            subtitle="Si reconoces dos o más, Software & IA debería ser tu primer paso antes de cualquier robot."
+          />
+          <TrustProblemList items={problemSolutions} />
         </div>
       </section>
 
-      {/* Sub-Services */}
-      <section className="py-24 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <SectionHeader
-              tag="SERVICIOS"
-              title="Soluciones de"
-              highlight="Software & IA"
-              subtitle="Para plantas industriales, almacenes y negocios en crecimiento."
-            />
-          </ScrollReveal>
+      {/* Caso real AGNOR */}
+      <TrustTestimonialBlock
+        eyebrow="Caso real · AGNOR Dashboard"
+        quote="Implementamos un agente de IA y CRM automatizado para AGNOR. Aumentaron leads calificados y redujeron tiempo de respuesta a menos de 30 segundos."
+        pendingReview
+        authorName="Equipo AGNOR"
+        authorInitials="AG"
+        authorRole="Equipo comercial"
+        authorCompany="AGNOR"
+        durationLabel={`Implementación en ${aiAgentProject.duration}`}
+        caseHref="/proyectos"
+        metrics={[
+          { label: "Leads calificados", value: "+60%", highlight: true },
+          { label: "Tiempo de respuesta", value: "<30s" },
+          { label: "Costo por lead", value: "−45%" },
+          { label: "Implementación", value: aiAgentProject.duration ?? "" },
+        ]}
+      />
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {softwareSubServices.map((service, i) => (
-              <ScrollReveal key={service.id} delay={i * 80}>
-                <div
-                  className="group glass-card p-8 rounded-2xl"
-                >
-                  <div className="icon-glow w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden flex items-center justify-center p-4 mb-5">
-                    <Image src={service.icon} alt={service.title} width={144} height={144} className="icon-blend object-contain w-full h-full drop-shadow-[0_2px_8px_rgba(59,130,246,0.3)]" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-white/60 mb-5">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-white/70">
-                        <Check className="w-4 h-4 text-blue-400 shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ScrollReveal>
+      {/* Servicios */}
+      <section className="section-surface py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <TrustSectionHeader
+            eyebrow="Servicios software & IA"
+            title="Cinco soluciones que se combinan según tu operación."
+            subtitle="Cada una se puede implementar individual o como conjunto. Compatible con tu ERP, WMS o SCADA actual."
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {softwareSubServices.map((service) => (
+              <TrustServiceCard
+                key={service.id}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                features={service.features}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Pricing */}
-      <section id="precios" className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <SectionHeader
-              tag="PRECIOS"
-              title="Precios"
-              highlight="transparentes"
-              subtitle="Sin sorpresas. Elige el plan que mejor se adapta a tu negocio."
-            />
-          </ScrollReveal>
-
-          <PricingTable tiers={pricingTiers} />
+      <section id="precios" className="section-light py-20 border-t border-trust-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <TrustSectionHeader
+            eyebrow="Precios"
+            title="Precios públicos. Sin sorpresas en la cotización."
+            subtitle="Estos son nuestros planes mensuales para Software & IA. Para automatización industrial física pasamos por cotización formal después de visita en sitio."
+          />
+          <TrustPricingGrid tiers={pricingTiers} ctaHref="/contacto" />
+          <p className="mt-8 text-center text-sm text-ink-400">
+            Precios en MXN, no incluyen IVA · Cancelas cuando quieras · NDA al
+            iniciar el proyecto
+          </p>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="py-24 bg-white/[0.02]">
-        <div className="max-w-3xl mx-auto px-6">
-          <ScrollReveal>
-            <SectionHeader
-              tag="PROCESO"
-              title="3 pasos para"
-              highlight="empezar"
-              subtitle="No necesitas saber de tecnologia. Nosotros nos encargamos de todo."
-            />
-          </ScrollReveal>
-
-          <div className="space-y-0">
-            {processSteps.map((step, index) => (
-              <ScrollReveal key={step.step} delay={index * 120}>
-                <ProcessStepComponent
-                  step={step}
-                  isLast={index === processSteps.length - 1}
-                />
-              </ScrollReveal>
-            ))}
-          </div>
+      {/* Proceso */}
+      <section className="section-surface py-20">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8">
+          <TrustSectionHeader
+            eyebrow="Cómo trabajamos"
+            title="Tres pasos. Sin sorpresas."
+            subtitle="No necesitas saber de tecnología. Nosotros traducimos al lenguaje técnico y de regreso."
+          />
+          <TrustProcessSteps steps={processSteps} />
         </div>
       </section>
 
-      <CTASection
-        title="¿Listo para llevar tu empresa al"
-        highlight="siguiente nivel?"
-        description="Agenda una consulta gratuita de 30 minutos. Te mostramos como la IA puede transformar tu negocio."
-        ctaLabel="Agendar Consulta Gratuita"
-        ctaHref="/contacto"
-      />
+      <TrustCTASection />
     </>
   );
 }

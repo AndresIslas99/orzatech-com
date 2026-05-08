@@ -73,7 +73,8 @@ export default function TrustNavbar() {
             )}
           </div>
           <Link href="/industria" className="hover:text-navy-900">Industria</Link>
-          <Link href="/proyectos" className="hover:text-navy-900">Proyectos</Link>
+          <Link href="/proyectos" className="hover:text-navy-900">Casos</Link>
+          <Link href="/nosotros" className="hover:text-navy-900">Nosotros</Link>
           <Link href="/contacto" className="hover:text-navy-900">Contacto</Link>
         </nav>
 
@@ -112,7 +113,8 @@ export default function TrustNavbar() {
             ))}
             <div className="border-t border-trust-divider pt-4 mt-1 text-xs uppercase tracking-widest text-ink-400">Navegar</div>
             <Link href="/industria">Industria</Link>
-            <Link href="/proyectos">Proyectos</Link>
+            <Link href="/proyectos">Casos</Link>
+            <Link href="/nosotros">Nosotros</Link>
             <Link href="/contacto">Contacto</Link>
             <div className="border-t border-trust-divider pt-4 mt-1 flex flex-col gap-3">
               <a href={`tel:${CONTACT.phone}`} className="flex items-center gap-2">

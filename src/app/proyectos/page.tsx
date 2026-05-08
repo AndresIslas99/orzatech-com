@@ -1,17 +1,18 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import ProjectsGrid from "@/components/sections/ProjectsGrid";
-import CTASection from "@/components/sections/CTASection";
 import { projects } from "@/data/projects";
+import TrustPageHero from "@/components/trust/TrustPageHero";
+import TrustProjectCard from "@/components/trust/TrustProjectCard";
+import TrustCTASection from "@/components/trust/TrustCTASection";
 
 export const metadata = generatePageMetadata({
-  title: "Proyectos - Portfolio de Automatizacion & Software",
+  title: "Casos de éxito · Proyectos entregados con métricas reales",
   description:
-    "Portfolio de proyectos de automatizacion industrial, robotica y software con IA. Casos de exito en manufactura, logistica, energia y tecnologia.",
+    "Portfolio de proyectos de automatización industrial, robótica y software con IA. Cada caso con métricas verificables: tiempos de entrega, ROI, mejoras operativas reales.",
   keywords: [
-    "proyectos automatizacion",
-    "portfolio robotica",
-    "casos de exito",
-    "automatizacion Mexico",
+    "casos de éxito automatización",
+    "portfolio robótica industrial",
+    "proyectos Orza Technologies",
+    "automatización México",
   ],
   path: "/proyectos",
 });
@@ -19,31 +20,33 @@ export const metadata = generatePageMetadata({
 export default function ProyectosPage() {
   return (
     <>
-      <section className="pt-32 pb-12">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <span className="text-blue-500 font-mono text-sm">// PORTFOLIO</span>
-          <h1 className="text-4xl md:text-5xl font-black mt-4 mb-4">
-            Nuestros <span className="gradient-text">Proyectos</span>
-          </h1>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Soluciones implementadas para clientes en industrias de manufactura, logistica, energia y tecnologia.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-12 pb-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <ProjectsGrid projects={projects} />
-        </div>
-      </section>
-
-      <CTASection
-        title="¿Tienes un proyecto"
-        highlight="similar?"
-        description="Cuentanos sobre tu proyecto y te ayudamos a encontrar la mejor solucion."
-        ctaLabel="Iniciar Proyecto"
-        ctaHref="/contacto"
+      <TrustPageHero
+        eyebrow="Casos de éxito"
+        title={
+          <>
+            Proyectos entregados.{" "}
+            <span className="text-accent-500">Con números, no con promesas.</span>
+          </>
+        }
+        description="Cada proyecto incluye sus métricas reales: ROI, tiempos de entrega, mejoras operativas. Sin marketing, solo lo que medimos junto con el cliente."
+        primaryCta={{ label: "Solicitar caso similar", href: "/contacto" }}
+        trustItems={[
+          { label: "Métricas verificadas con cliente" },
+          { label: "NDA disponible bajo solicitud" },
+        ]}
       />
+
+      <section className="section-light py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {projects.map((project) => (
+              <TrustProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <TrustCTASection />
     </>
   );
 }

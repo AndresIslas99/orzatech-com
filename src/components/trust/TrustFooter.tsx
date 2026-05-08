@@ -93,12 +93,13 @@ export default function TrustFooter() {
             Compañía
           </div>
           <ul className="space-y-2.5 text-sm text-navy-100">
+            <li><Link href="/nosotros" className="hover:text-white transition">Nosotros</Link></li>
             <li><Link href="/proyectos" className="hover:text-white transition">Casos de éxito</Link></li>
             <li><Link href="/contacto" className="hover:text-white transition">Contacto</Link></li>
             <li>
               <Link
                 href="/contacto"
-                className="inline-flex items-center gap-1 text-accent-500 hover:text-accent-100 transition font-medium"
+                className="inline-flex items-center gap-1 text-accent-500 hover:text-accent-100 transition font-medium pt-1"
               >
                 Solicitar cotización <ArrowRight className="w-3.5 h-3.5" />
               </Link>
