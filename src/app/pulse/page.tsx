@@ -13,7 +13,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { generatePageMetadata } from "@/lib/metadata";
-import TrustPageHero from "@/components/trust/TrustPageHero";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE } from "@/lib/constants";
 import TrustSectionHeader from "@/components/trust/TrustSectionHeader";
 import TrustCTASection from "@/components/trust/TrustCTASection";
 import {
@@ -53,9 +54,38 @@ export const metadata = generatePageMetadata({
 
 const featureIcons = [Mic, ShieldCheck, Box, Brain];
 
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "ORZA Pulse",
+  description:
+    "Kiosko con inteligencia artificial para distribuidoras eléctricas. Validación normativa CMAA/IEC/IEEE en tiempo real, recomendación de productos del inventario y captura de demanda invisible.",
+  brand: {
+    "@type": "Brand",
+    name: "Orza Technologies",
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: "Orza Technologies SAPI de CV",
+    url: SITE.url,
+  },
+  category: "Industrial AI Kiosk",
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/PreOrder",
+    priceCurrency: "MXN",
+    url: `${SITE.url}/contacto/`,
+    seller: {
+      "@type": "Organization",
+      name: "Orza Technologies SAPI de CV",
+    },
+  },
+};
+
 export default function PulsePage() {
   return (
     <>
+      <JsonLd data={productSchema} />
       {/* 1 — Hero with chat preview */}
       <section className="section-light pt-12 pb-16 md:pt-16 md:pb-20 border-b border-trust-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">

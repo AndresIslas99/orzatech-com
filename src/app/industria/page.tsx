@@ -1,6 +1,8 @@
 import { generatePageMetadata } from "@/lib/metadata";
+import { SITE } from "@/lib/constants";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
+import JsonLd from "@/components/seo/JsonLd";
 import TrustPageHero from "@/components/trust/TrustPageHero";
 import TrustSectionHeader from "@/components/trust/TrustSectionHeader";
 import TrustServiceCard from "@/components/trust/TrustServiceCard";
@@ -53,9 +55,42 @@ const trustPillars = [
   },
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Automatización Industrial",
+  serviceType: "Industrial Automation",
+  description:
+    "Brazos robóticos, AGV/AMR, automatización de grúas y gemelos digitales. Integración certificada con Universal Robots, ABB, Siemens y Yaskawa.",
+  provider: {
+    "@type": "Organization",
+    name: "Orza Technologies SAPI de CV",
+    url: SITE.url,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Ciudad de México",
+      addressCountry: "MX",
+    },
+  },
+  areaServed: ["MX", "US", "LATAM"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios Industriales",
+    itemListElement: industrialServices.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.title,
+        description: s.description,
+      },
+    })),
+  },
+};
+
 export default function IndustriaPage() {
   return (
     <>
+      <JsonLd data={serviceSchema} />
       <TrustPageHero
         eyebrow="Industria · Automatización física"
         title={

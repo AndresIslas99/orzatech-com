@@ -1,4 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
+import { SITE } from "@/lib/constants";
 import {
   softwareSubServices,
   pricingTiers,
@@ -6,6 +7,7 @@ import {
   problemSolutions,
 } from "@/data/software-services";
 import { projects } from "@/data/projects";
+import JsonLd from "@/components/seo/JsonLd";
 import TrustPageHero from "@/components/trust/TrustPageHero";
 import TrustSectionHeader from "@/components/trust/TrustSectionHeader";
 import TrustServiceCard from "@/components/trust/TrustServiceCard";
@@ -32,9 +34,35 @@ export const metadata = generatePageMetadata({
 
 const aiAgentProject = projects.find((p) => p.slug === "agente-ia-crm")!;
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Software industrial & IA",
+  serviceType: "Industrial Software & AI",
+  description:
+    "Dashboards en tiempo real, telemetría industrial, agentes de IA por WhatsApp y CRM automatizado. Implementación en menos de 30 días con precios públicos.",
+  provider: {
+    "@type": "Organization",
+    name: "Orza Technologies SAPI de CV",
+    url: SITE.url,
+  },
+  areaServed: ["MX", "US", "LATAM"],
+  offers: pricingTiers
+    .filter((t) => t.price !== "Personalizado")
+    .map((t) => ({
+      "@type": "Offer",
+      name: t.name,
+      price: t.price.replace(/[^0-9]/g, ""),
+      priceCurrency: "MXN",
+      description: t.description,
+      url: `${SITE.url}/contacto/`,
+    })),
+};
+
 export default function SoftwarePage() {
   return (
     <>
+      <JsonLd data={serviceSchema} />
       <TrustPageHero
         eyebrow="Software & IA · Fase 1: visibilidad operativa"
         title={
