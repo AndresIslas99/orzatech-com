@@ -1,209 +1,128 @@
-import { generatePageMetadata } from "@/lib/metadata";
-import HeroHome from "@/components/sections/HeroHome";
-import ClientsBar from "@/components/sections/ClientsBar";
-import StatsSection from "@/components/sections/StatsSection";
-import PartnersSection from "@/components/sections/PartnersSection";
-import CTASection from "@/components/sections/CTASection";
-import VerticalCard from "@/components/ui/VerticalCard";
-import ProjectsGrid from "@/components/sections/ProjectsGrid";
-import SectionHeader from "@/components/ui/SectionHeader";
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import { featuredProjects } from "@/data/projects";
-import PulseShowcase from "@/components/sections/PulseShowcase";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { generatePageMetadata } from "@/lib/metadata";
+import { featuredProjects, projects } from "@/data/projects";
+import TrustHero from "@/components/trust/TrustHero";
+import TrustClientBar from "@/components/trust/TrustClientBar";
+import TrustTestimonialBlock from "@/components/trust/TrustTestimonialBlock";
+import TrustVerticalCard from "@/components/trust/TrustVerticalCard";
+import TrustProjectCard from "@/components/trust/TrustProjectCard";
+import TrustPartnersBar from "@/components/trust/TrustPartnersBar";
+import TrustCTASection from "@/components/trust/TrustCTASection";
 
 export const metadata = generatePageMetadata({
-  title: "Software Industrial & Automatizacion para Empresas | Orza Technologies",
+  title: "Automatización Industrial Confiable | Orza Technologies",
   description:
-    "Software de visibilidad operativa, dashboards industriales, agentes de IA y automatizacion fisica. Implementacion en menos de 30 dias para empresas en Mexico, US y LATAM.",
+    "Automatización industrial, robótica y software de visibilidad operativa para empresas en México, US y LATAM. Cotización formal en menos de 48 horas. Empresa SAPI de CV.",
   keywords: [
+    "automatización industrial México",
+    "robótica industrial",
     "software industrial",
-    "visibilidad operativa",
-    "dashboards industriales",
     "agentes IA",
-    "automatizacion industrial",
-    "robotica industrial",
-    "AGV",
-    "AMR",
-    "Mexico",
+    "telemetría",
+    "AGV AMR",
+    "Orza Technologies",
   ],
   path: "/",
 });
 
+// Real Limser project for the testimonial section
+const limserProject = projects.find((p) => p.slug === "transfer-car")!;
+
 export default function Home() {
   return (
     <>
-      <HeroHome />
+      <TrustHero />
 
-      <ClientsBar />
+      <TrustClientBar />
 
-      <PulseShowcase />
+      {/* Real testimonial — Hugo García / Limser Cranes */}
+      <TrustTestimonialBlock
+        eyebrow="Caso real · Industria metalúrgica"
+        quote="Trabajamos con Orza para automatizar nuestro transfer car de 60 toneladas. La cotización fue clara, los tiempos se cumplieron y el resultado eliminó los incidentes de seguridad que arrastrábamos."
+        pendingReview
+        authorName="Hugo García"
+        authorInitials="HG"
+        authorRole="Gerente de Proyectos"
+        authorCompany="Limser Cranes"
+        durationLabel={`Proyecto entregado en ${limserProject.duration}`}
+        caseHref="/proyectos"
+        metrics={[
+          { label: "Incidentes de seguridad", value: "0", highlight: true },
+          { label: "Ciclos registrados", value: "100%" },
+          { label: "Tiempo de ciclo", value: "−18%" },
+          { label: "Duración del proyecto", value: limserProject.duration ?? "" },
+        ]}
+      />
 
-      {/* Three-Phase Journey */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <SectionHeader
-              tag="TU CAMINO"
-              title="De datos a"
-              highlight="automatizacion"
-              subtitle="La automatizacion exitosa empieza por entender tu operacion. Cada fase construye sobre la anterior."
-            />
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-3 gap-6 relative">
-            {/* Connector line between phases (desktop only) */}
-            <div className="hidden md:block absolute top-1/2 left-[calc(33.33%+12px)] right-[calc(33.33%+12px)] h-px bg-gradient-to-r from-blue-500/40 via-blue-500/20 to-blue-500/10 z-0" />
-
-            {/* Fase 1 — highlighted */}
-            <ScrollReveal delay={0}>
-              <div className="rounded-2xl border border-blue-500/50 relative z-10 overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.1)]">
-                <div className="relative h-52 md:h-56 overflow-hidden">
-                  <Image src="/images/icons/phase-visibility.webp" alt="Control room con dashboards" width={800} height={800} className="object-cover w-full h-full" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/40 to-transparent" />
-                  <span className="absolute top-4 left-4 text-xs font-mono text-blue-400 bg-blue-500/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                    EMPIEZA AQUI
-                  </span>
-                </div>
-                <div className="p-6 pt-0 -mt-6 relative z-10">
-                  <h3 className="text-2xl font-bold mb-2">Fase 1 — Visibilidad</h3>
-                  <p className="text-white/60">
-                    Dashboards conectados, telemetria industrial y agentes de IA 24/7. Entiende tu operacion antes de cambiarla.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Fase 2 */}
-            <ScrollReveal delay={100}>
-              <div className="rounded-2xl border border-white/10 relative z-10 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                <div className="relative h-52 md:h-56 overflow-hidden">
-                  <Image src="/images/icons/phase-optimization.webp" alt="Gemelo digital y simulacion 3D" width={800} height={800} className="object-cover w-full h-full" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/40 to-transparent" />
-                </div>
-                <div className="p-6 pt-0 -mt-6 relative z-10">
-                  <h3 className="text-2xl font-bold mb-2">Fase 2 — Optimizacion</h3>
-                  <p className="text-white/60">
-                    Gemelos digitales, simulacion y prediccion. Valida mejoras antes de invertir en hardware.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Fase 3 */}
-            <ScrollReveal delay={200}>
-              <div className="rounded-2xl border border-white/10 relative z-10 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                <div className="relative h-52 md:h-56 overflow-hidden">
-                  <Image src="/images/icons/phase-automation.webp" alt="Fabrica automatizada con robots" width={800} height={800} className="object-cover w-full h-full" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/40 to-transparent" />
-                </div>
-                <div className="p-6 pt-0 -mt-6 relative z-10">
-                  <h3 className="text-2xl font-bold mb-2">Fase 3 — Automatizacion</h3>
-                  <p className="text-white/60">
-                    Brazos roboticos, AGV/AMR y gruas automatizadas. El paso natural cuando ya tienes visibilidad.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
+      {/* Verticales */}
+      <section className="section-surface py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="eyebrow-light mb-3">Soluciones</div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight">
+              Tres formas de empezar a automatizar tu operación.
+            </h2>
+            <p className="mt-4 text-base text-ink-500">
+              Elige la vertical que mejor se adapta a tu prioridad ahora —
+              después escalamos al resto.
+            </p>
           </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            <TrustVerticalCard
+              eyebrow="Software & IA"
+              title="Visibilidad antes del hardware"
+              description="Dashboards en tiempo real, telemetría industrial, agentes de IA y CRM automatizado. El paso 1 cuando todavía no sabes qué optimizar."
+              href="/software"
+              cta="Ver software & IA"
+            />
+            <TrustVerticalCard
+              eyebrow="Industria"
+              title="Robótica y automatización física"
+              description="Brazos robóticos, AGV/AMR, gemelos digitales y automatización de grúas. Para cuando ya tienes datos y necesitas mover toneladas."
+              href="/industria"
+              cta="Ver soluciones industriales"
+            />
+            <TrustVerticalCard
+              eyebrow="Producto · Pulse"
+              title="Kiosko de IA para distribuidoras"
+              description="ORZA Pulse: cotización técnica automatizada, validación normativa y BI en tiempo real para distribuidoras eléctricas."
+              href="/pulse"
+              cta="Conocer ORZA Pulse"
+            />
+          </div>
+        </div>
+      </section>
 
-          <ScrollReveal>
-            <div className="text-center mt-10">
-              <Link
-                href="/software"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-full text-lg font-semibold transition-all hover:scale-105"
-              >
-                Empezar con Visibilidad
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+      {/* Featured projects */}
+      <section className="section-light py-20 border-t border-trust-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+            <div>
+              <div className="eyebrow-light mb-3">Casos de éxito</div>
+              <h2 className="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight max-w-xl">
+                Proyectos entregados con números, no con promesas.
+              </h2>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <StatsSection />
-
-      {/* Verticals Section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <SectionHeader
-              tag="SOLUCIONES"
-              title="¿Que necesita tu"
-              highlight="empresa?"
-              subtitle="Cada negocio tiene retos diferentes. Elige la vertical que mejor se adapta a tu operacion."
-            />
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <ScrollReveal delay={0}>
-              <VerticalCard
-                icon="/images/pulse/pulse-foto7.webp"
-                title="ORZA Pulse"
-                description="Kioscos con IA para distribuidoras: asesoria tecnica automatizada, validacion normativa y business intelligence."
-                href="/pulse"
-                cta="Conocer ORZA Pulse"
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <VerticalCard
-                icon="/images/icons/software-ai.webp"
-                title="Software & IA"
-                description="Empieza aqui: dashboards en tiempo real, agentes de IA y CRM automatizado. Visibilidad total antes de invertir en hardware."
-                href="/software"
-                cta="Ver servicios de IA"
-              />
-            </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <VerticalCard
-                icon="/images/icons/factory.webp"
-                title="Automatizacion Industrial"
-                description="Brazos roboticos, AGV/AMR y automatizacion de gruas cuando ya tienes visibilidad de tus procesos."
-                href="/industria"
-                cta="Explorar soluciones"
-              />
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-24 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <SectionHeader
-              tag="CASOS DE EXITO"
-              title="Proyectos"
-              highlight="Destacados"
-              subtitle="Soluciones implementadas para clientes en industrias de manufactura, logistica, energia y tecnologia."
-            />
-          </ScrollReveal>
-
-          <ProjectsGrid projects={featuredProjects} />
-
-          <div className="text-center mt-10">
             <Link
               href="/proyectos"
-              className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-navy-900 hover:text-accent-500 transition"
             >
               Ver todos los proyectos
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {featuredProjects.map((project) => (
+              <TrustProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
         </div>
       </section>
 
-      <PartnersSection />
+      <TrustPartnersBar />
 
-      <CTASection
-        title="¿Por donde empezar?"
-        highlight="Por los datos."
-        description="En 30 minutos te mostramos que parte de tu operacion tiene datos utiles y como convertirlos en visibilidad inmediata."
-        ctaLabel="Agendar Diagnostico Gratuito"
-        ctaHref="/contacto"
-      />
+      <TrustCTASection />
     </>
   );
 }

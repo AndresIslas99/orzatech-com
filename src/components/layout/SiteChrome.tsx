@@ -5,8 +5,20 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
 import LeadMagnet from "./LeadMagnet";
+import TrustNavbar from "@/components/trust/TrustNavbar";
+import TrustFooter from "@/components/trust/TrustFooter";
 
+// Routes with their own header/footer (no chrome at all)
 const NO_CHROME_ROUTES = ["/styleguide"];
+
+// Routes already migrated to the trust-first light theme.
+// Add new routes here as they are migrated.
+const TRUST_ROUTES = ["/"];
+
+function isExactOrChild(pathname: string, route: string) {
+  if (route === "/") return pathname === "/";
+  return pathname === route || pathname.startsWith(route + "/");
+}
 
 export default function SiteChrome({
   children,
@@ -14,14 +26,26 @@ export default function SiteChrome({
   children: React.ReactNode;
 }) {
   const pathname = usePathname() ?? "";
-  const hideChrome = NO_CHROME_ROUTES.some((r) => pathname.startsWith(r));
 
-  if (hideChrome) {
+  // 1. Pages that handle their own chrome
+  if (NO_CHROME_ROUTES.some((r) => pathname.startsWith(r))) {
     return (
       <main className="min-h-screen bg-trust-bg text-ink-700">{children}</main>
     );
   }
 
+  // 2. Trust-first light theme routes (migrated)
+  if (TRUST_ROUTES.some((r) => isExactOrChild(pathname, r))) {
+    return (
+      <div className="min-h-screen bg-trust-bg text-ink-700">
+        <TrustNavbar />
+        <main>{children}</main>
+        <TrustFooter />
+      </div>
+    );
+  }
+
+  // 3. Legacy dark theme (unmigrated routes — keeps working until each is updated)
   return (
     <div className="min-h-screen bg-bg-deep text-white overflow-x-hidden">
       <div className="fixed inset-0 bg-grid-pattern pointer-events-none" />
