@@ -59,8 +59,16 @@ const jsonLdString = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE.name,
+  legalName: "Orza Technologies SAPI de CV",
   url: SITE.url,
   logo: `${SITE.url}/images/logo/orza-logo.webp`,
+  image: `${SITE.url}/images/team/founders-notaria.webp`,
+  foundingDate: "2023",
+  founders: [
+    { "@type": "Person", name: "Andrés Islas", jobTitle: "CEO" },
+    { "@type": "Person", name: "Victor Enriques", jobTitle: "CTO" },
+    { "@type": "Person", name: "Alan Davila", jobTitle: "CIO" },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: CONTACT.phone,

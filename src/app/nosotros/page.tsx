@@ -113,7 +113,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Equipo — foto real */}
+      {/* Equipo — foto real + nombres */}
       <section className="section-surface py-20">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <TrustSectionHeader
@@ -127,7 +127,7 @@ export default function NosotrosPage() {
               <div className="relative aspect-[4/3] bg-trust-surface-2">
                 <Image
                   src="/images/team/founders-notaria.webp"
-                  alt="Los tres socios fundadores de Orza Technologies firmando la constitución de la empresa ante notario en Ciudad de México"
+                  alt="Andrés Islas, Victor Enriques y Alan Davila — los tres socios fundadores de Orza Technologies firmando la constitución de la empresa ante notario en Ciudad de México"
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 60vw, 100vw"
@@ -156,6 +156,49 @@ export default function NosotrosPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Founder cards */}
+          <div className="mt-10 grid sm:grid-cols-3 gap-5">
+            {[
+              {
+                initials: "AI",
+                name: "Andrés Islas",
+                role: "CEO · Co-founder",
+                desc: "Lidera operación, alianzas comerciales y dirección estratégica.",
+              },
+              {
+                initials: "VE",
+                name: "Victor Enriques",
+                role: "CTO · Co-founder",
+                desc: "Responsable de ingeniería, arquitectura técnica y entrega en planta.",
+              },
+              {
+                initials: "AD",
+                name: "Alan Davila",
+                role: "CIO · Co-founder",
+                desc: "Lidera plataforma de software, IA y operación de información interna.",
+              },
+            ].map((f) => (
+              <div key={f.initials} className="trust-card p-6">
+                <div className="flex items-center gap-4">
+                  <div className="avatar-initials w-14 h-14 text-base shrink-0">
+                    {f.initials}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-navy-900 truncate">
+                      {f.name}
+                    </div>
+                    <div className="text-xs text-accent-500 font-mono uppercase tracking-wider mt-0.5">
+                      {f.role}
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm text-ink-500 leading-relaxed">
+                  {f.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
