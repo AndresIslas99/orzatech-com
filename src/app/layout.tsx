@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -15,6 +15,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  axes: ["opsz", "SOFT"],
+  display: "swap",
 });
 
 const ogImage = `${SITE.url}/images/og-image.jpg`;
@@ -94,15 +101,16 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0b] text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased bg-bg-deep text-white`}
       >
-        <div className="min-h-screen bg-[#0a0a0b] text-white overflow-x-hidden">
+        <div className="min-h-screen bg-bg-deep text-white overflow-x-hidden">
           {/* Background grid */}
           <div className="fixed inset-0 bg-grid-pattern pointer-events-none" />
 
-          {/* Decorative elements */}
-          <div className="fixed top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="fixed bottom-20 right-10 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+          {/* Decorative ambient orbs (industrial blue + amber accent) */}
+          <div className="fixed top-20 left-10 w-72 h-72 bg-eng-blue-500/8 rounded-full blur-3xl pointer-events-none" />
+          <div className="fixed bottom-20 right-10 w-96 h-96 bg-eng-blue-600/6 rounded-full blur-3xl pointer-events-none" />
+          <div className="fixed top-1/3 right-1/4 w-64 h-64 bg-amber-500/3 rounded-full blur-3xl pointer-events-none" />
 
           <Navbar />
           <main>{children}</main>
