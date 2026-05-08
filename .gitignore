@@ -16,6 +16,13 @@
 # next.js
 /.next/
 /out/
+/out.zip
+*.zip
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
 
 # production
 /build
