@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { Phone, MessageCircle, ShieldCheck, MapPin, Mail, ArrowRight, Check, Star } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Styleguide — Orza Tech",
@@ -6,280 +8,477 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const palette = [
-  { name: "bg-deep", value: "#08090c", role: "Page background" },
-  { name: "bg-surface", value: "#0f1115", role: "Cards / panels" },
-  { name: "bg-elevated", value: "#161922", role: "Elevated surfaces" },
-  { name: "steel-700", value: "#1f242f", role: "Borders, dividers" },
-  { name: "steel-500", value: "#3a4150", role: "Mid-graphite" },
-  { name: "steel-300", value: "#5b6473", role: "Disabled / inactive" },
-  { name: "steel-100", value: "#aab2c0", role: "Body text on dark" },
+const clientLogos = [
+  { name: "Ford",   src: "/images/clients/Ford.png",   alt: "Ford" },
+  { name: "Kiewit", src: "/images/clients/Kiewit.png", alt: "Kiewit" },
+  { name: "Harsco", src: "/images/clients/Harsco.png", alt: "Harsco Rail" },
+  { name: "AgNor",  src: "/images/clients/AgNor.png",  alt: "AgNor" },
+  { name: "Limser", src: "/images/clients/LIMSER LOGO.png", alt: "Limser Cranes" },
 ];
 
-const accent = [
-  { name: "eng-blue-500", value: "#0066ff", role: "Primary accent (Siemens-saturated)" },
-  { name: "eng-blue-400", value: "#3385ff", role: "Hover / link active" },
-  { name: "eng-blue-700", value: "#003d99", role: "Pressed" },
-  { name: "amber-500", value: "#f59e0b", role: "Secondary — reserved (data callouts, badges)" },
-  { name: "op-green-500", value: "#10b981", role: "Operational / success / uptime" },
-  { name: "alert-500", value: "#ef4444", role: "Critical only" },
-];
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <div className="eyebrow-light">{children}</div>;
+}
+
+function SectionLabel({ n, title }: { n: string; title: string }) {
+  return (
+    <div className="mb-8">
+      <div className="font-mono text-xs text-ink-400 uppercase tracking-wider mb-2">
+        {n} · Styleguide
+      </div>
+      <h2 className="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight">
+        {title}
+      </h2>
+    </div>
+  );
+}
 
 function Swatch({ name, value, role }: { name: string; value: string; role: string }) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="trust-card p-4 flex items-center gap-4">
       <div
-        className="w-16 h-16 rounded-lg ring-1 ring-white/10 shrink-0"
+        className="w-14 h-14 rounded-lg shrink-0 ring-1 ring-trust-border"
         style={{ background: value }}
       />
       <div className="min-w-0">
-        <div className="font-mono text-sm text-white">{name}</div>
-        <div className="font-mono text-xs text-text-tertiary">{value}</div>
-        <div className="text-xs text-text-secondary mt-0.5">{role}</div>
+        <div className="font-mono text-sm text-navy-900 font-medium">{name}</div>
+        <div className="font-mono text-xs text-ink-400">{value}</div>
+        <div className="text-xs text-ink-500 mt-0.5">{role}</div>
       </div>
     </div>
   );
 }
 
-function Section({
-  eyebrow,
-  title,
-  children,
-}: {
-  eyebrow: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="py-16 border-t border-white/5">
-      <div className="eyebrow mb-3">{eyebrow}</div>
-      <h2 className="font-display text-4xl text-white mb-10">{title}</h2>
-      {children}
-    </section>
-  );
-}
+const surfaces = [
+  { name: "trust-bg",        value: "#ffffff", role: "Page background" },
+  { name: "trust-surface",   value: "#f8fafc", role: "Alternate sections" },
+  { name: "trust-surface-2", value: "#f1f5f9", role: "Sunken surfaces" },
+  { name: "trust-border",    value: "#e5e7eb", role: "Default borders" },
+];
+
+const navyScale = [
+  { name: "navy-900", value: "#0a2540", role: "Primary brand · titles" },
+  { name: "navy-700", value: "#102a4c", role: "Hover / pressed" },
+  { name: "navy-500", value: "#1f4068", role: "Mid-tone" },
+  { name: "navy-300", value: "#6a8caf", role: "Soft accent text" },
+];
+
+const accents = [
+  { name: "accent-500",   value: "#ea580c", role: "Industrial orange — CTA reservado" },
+  { name: "verified-500", value: "#16a34a", role: "Verificado · uptime · garantía" },
+  { name: "critical-500", value: "#dc2626", role: "Solo errores críticos" },
+];
+
+const inkScale = [
+  { name: "ink-900", value: "#0a2540", role: "Body title (= navy-900)" },
+  { name: "ink-700", value: "#1e293b", role: "Body text" },
+  { name: "ink-500", value: "#475569", role: "Secondary text" },
+  { name: "ink-400", value: "#64748b", role: "Captions / metadata" },
+  { name: "ink-300", value: "#94a3b8", role: "Disabled / hint" },
+];
 
 export default function StyleguidePage() {
   return (
-    <div className="max-w-6xl mx-auto px-6 lg:px-8 py-24">
-      {/* Header */}
-      <div className="pb-16">
-        <div className="eyebrow mb-4">Internal · v0.1 · Industrial premium</div>
-        <h1 className="font-display text-6xl lg:text-7xl text-white tracking-tight leading-[0.95]">
-          Orza Design System
-        </h1>
-        <p className="mt-6 text-lg text-text-secondary max-w-2xl">
-          Reference for the visual language of orzatech.com. Industrial
-          editorial — sober palette, technical accents, dimensional depth,
-          precision motion. Inspired by ABB, Siemens and Rockwell visual
-          systems.
-        </p>
+    <div className="fixed inset-0 z-40 overflow-y-auto bg-trust-bg text-ink-700">
+      {/* ─────────── PROTOTYPE NAVBAR ─────────── */}
+      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-trust-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-md bg-navy-900 flex items-center justify-center text-white font-bold text-sm">
+              O
+            </div>
+            <div className="font-semibold text-navy-900 tracking-tight text-lg">
+              Orza Technologies
+            </div>
+          </div>
+          <nav className="hidden md:flex items-center gap-7 text-sm text-ink-700 font-medium">
+            <a className="hover:text-navy-900">Soluciones</a>
+            <a className="hover:text-navy-900">Casos</a>
+            <a className="hover:text-navy-900">Industria</a>
+            <a className="hover:text-navy-900">Pulse</a>
+            <a className="hover:text-navy-900">Nosotros</a>
+          </nav>
+          <div className="flex items-center gap-3">
+            <a
+              href="tel:+525620595320"
+              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-navy-900 hover:text-accent-500"
+            >
+              <Phone className="w-4 h-4" /> +52 56 2059 5320
+            </a>
+            <button className="btn-primary text-sm">
+              Solicitar cotización <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* ─────────── HERO PROTOTYPE ─────────── */}
+      <section className="section-light pt-16 pb-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <div className="badge-verified mb-5">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              Empresa constituida · SAPI de CV
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-navy-900 tracking-tight leading-[1.05]">
+              Automatizamos plantas industriales.{" "}
+              <span className="text-accent-500">Sin sorpresas.</span>
+            </h1>
+            <p className="mt-6 text-lg text-ink-500 max-w-xl leading-relaxed">
+              Robótica, software de visibilidad operativa y agentes de IA para
+              empresas que necesitan producir más, con menos riesgo. Cotización
+              en menos de 48 horas.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <button className="btn-accent">
+                Solicitar cotización <ArrowRight className="w-4 h-4" />
+              </button>
+              <a
+                href="https://wa.me/525620595320"
+                className="btn-secondary"
+              >
+                <MessageCircle className="w-4 h-4 text-verified-500" />
+                Hablar por WhatsApp
+              </a>
+            </div>
+            <div className="mt-8 flex items-center gap-6 text-sm text-ink-500">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-verified-500" />
+                Cotización formal con NDA
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-verified-500" />
+                Respuesta &lt; 4 h hábiles
+              </div>
+            </div>
+          </div>
+
+          {/* Right side — trust panel */}
+          <aside className="lg:col-span-5">
+            <div className="trust-card-elevated p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="eyebrow-light">Operación verificada</div>
+                <div className="badge-verified">
+                  <Check className="w-3 h-3" /> activa
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-5">
+                <div>
+                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">24/7</div>
+                  <div className="text-xs text-ink-500 mt-1">Visibilidad operativa</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">+20%</div>
+                  <div className="text-xs text-ink-500 mt-1">Mejora OEE promedio</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">&lt;30</div>
+                  <div className="text-xs text-ink-500 mt-1">Días a producción</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">3</div>
+                  <div className="text-xs text-ink-500 mt-1">Países (MX · US · LATAM)</div>
+                </div>
+              </div>
+              <div className="mt-5 pt-5 border-t border-trust-divider flex items-center gap-3">
+                <MapPin className="w-4 h-4 text-ink-400" />
+                <div className="text-sm text-ink-500">
+                  Ciudad de México · Atendemos toda la República
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      {/* ─────────── CLIENT BAR ─────────── */}
+      <section className="section-surface py-10 border-y border-trust-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center text-xs font-mono text-ink-400 uppercase tracking-widest mb-6">
+            Confiados por empresas que producen 24/7
+          </div>
+          <div className="flex items-center justify-center gap-8 md:gap-14 flex-wrap">
+            {clientLogos.map((c) => (
+              <div key={c.name} className="h-10 flex items-center grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition">
+                <Image
+                  src={c.src}
+                  alt={c.alt}
+                  width={120}
+                  height={40}
+                  className="object-contain max-h-10 w-auto"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── REAL TESTIMONIAL: HUGO / LIMSER ─────────── */}
+      <section className="section-light py-20">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <Eyebrow>Caso real · Industria metalúrgica</Eyebrow>
+          <div className="mt-4 grid lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-7">
+              <blockquote className="text-2xl md:text-3xl text-navy-900 leading-snug font-medium">
+                <span className="text-accent-500 mr-2">&ldquo;</span>
+                [Cita pendiente de revisión por cliente — placeholder ilustrativo]
+                Trabajamos con Orza para automatizar nuestro transfer car de 60
+                toneladas. La cotización fue clara, los tiempos se cumplieron y
+                el resultado eliminó los incidentes de seguridad que arrastrábamos.
+                <span className="text-accent-500">&rdquo;</span>
+              </blockquote>
+              <div className="mt-6 flex items-center gap-4">
+                <div className="avatar-initials w-12 h-12 text-sm">HG</div>
+                <div>
+                  <div className="font-semibold text-navy-900">Hugo García</div>
+                  <div className="text-sm text-ink-500">Gerente de Proyectos · Limser Cranes</div>
+                </div>
+              </div>
+              <div className="mt-6 flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-1.5 text-amber-500">
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                </div>
+                <div className="text-ink-500">Proyecto entregado en 2 meses</div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="trust-card-elevated p-6">
+                <div className="eyebrow-light mb-4">Resultados reales</div>
+                <div className="space-y-4">
+                  <div className="flex items-baseline justify-between pb-3 border-b border-trust-divider">
+                    <div className="text-sm text-ink-500">Incidentes de seguridad</div>
+                    <div className="text-2xl font-semibold text-verified-500 tracking-tight">0</div>
+                  </div>
+                  <div className="flex items-baseline justify-between pb-3 border-b border-trust-divider">
+                    <div className="text-sm text-ink-500">Ciclos registrados</div>
+                    <div className="text-2xl font-semibold text-navy-900 tracking-tight">100%</div>
+                  </div>
+                  <div className="flex items-baseline justify-between pb-3 border-b border-trust-divider">
+                    <div className="text-sm text-ink-500">Tiempo de ciclo</div>
+                    <div className="text-2xl font-semibold text-navy-900 tracking-tight">−18%</div>
+                  </div>
+                  <div className="flex items-baseline justify-between">
+                    <div className="text-sm text-ink-500">Duración del proyecto</div>
+                    <div className="text-2xl font-semibold text-navy-900 tracking-tight">2 meses</div>
+                  </div>
+                </div>
+                <a className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-accent-500 hover:text-accent-700">
+                  Ver caso completo <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── DIVIDER: STYLEGUIDE INTERNALS ─────────── */}
+      <div className="section-surface border-y border-trust-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex items-center justify-between">
+          <div className="font-mono text-xs text-ink-400 uppercase tracking-widest">
+            Below: design system internals (no public)
+          </div>
+          <div className="badge-neutral">v0.2 · light · trust-first</div>
+        </div>
       </div>
 
-      {/* Palette — surfaces */}
-      <Section eyebrow="01 · Palette" title="Surfaces & graphite">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {palette.map((c) => (
-            <Swatch key={c.name} {...c} />
-          ))}
-        </div>
-      </Section>
+      {/* ─────────── PALETTE ─────────── */}
+      <section className="section-light py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionLabel n="01" title="Surfaces & borders" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {surfaces.map((c) => <Swatch key={c.name} {...c} />)}
+          </div>
 
-      {/* Palette — accents */}
-      <Section eyebrow="02 · Palette" title="Engineering & operational accents">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {accent.map((c) => (
-            <Swatch key={c.name} {...c} />
-          ))}
-        </div>
-        <p className="mt-8 text-sm text-text-tertiary max-w-3xl">
-          The amber accent is used <em>sparingly</em>. Reserve it for: a single
-          data callout per section, a critical CTA, a status badge. Overuse
-          breaks the industrial feel.
-        </p>
-      </Section>
+          <div className="mt-16">
+            <SectionLabel n="02" title="Navy — primary brand" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {navyScale.map((c) => <Swatch key={c.name} {...c} />)}
+            </div>
+          </div>
 
-      {/* Typography */}
-      <Section eyebrow="03 · Type" title="Pareada — sans + serif display + mono">
-        <div className="space-y-12">
+          <div className="mt-16">
+            <SectionLabel n="03" title="Accents — reserved use" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {accents.map((c) => <Swatch key={c.name} {...c} />)}
+            </div>
+            <p className="mt-4 text-sm text-ink-500 max-w-2xl">
+              El naranja se usa <em>una vez por sección</em> para un CTA o un
+              dato clave. El verde se reserva para badges de verificación,
+              uptime, o estado correcto. Rojo solo para errores reales.
+            </p>
+          </div>
+
+          <div className="mt-16">
+            <SectionLabel n="04" title="Ink — text scale" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {inkScale.map((c) => <Swatch key={c.name} {...c} />)}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── TYPOGRAPHY ─────────── */}
+      <section className="section-surface py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionLabel n="05" title="Typography — Geist Sans (sin serif)" />
+          <div className="space-y-10">
+            <div>
+              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Display · 6xl · semibold</div>
+              <div className="text-5xl md:text-6xl font-semibold text-navy-900 tracking-tight leading-[1.05]">
+                Visibilidad operativa.<br/>Decisiones automáticas.
+              </div>
+            </div>
+            <div>
+              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Heading · 3xl · semibold</div>
+              <div className="text-3xl font-semibold text-navy-900 tracking-tight">
+                Software industrial certificado para Norteamérica
+              </div>
+            </div>
+            <div>
+              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Body · base · regular</div>
+              <p className="text-base text-ink-700 max-w-2xl leading-relaxed">
+                Construimos automatización industrial, robótica y agentes de IA
+                con foco en seguridad operativa. Nuestros proyectos arrancan
+                con NDA, cotización formal y entregables clínicamente medibles
+                desde la primera reunión.
+              </p>
+            </div>
+            <div>
+              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Caption · sm · ink-500</div>
+              <p className="text-sm text-ink-500">Cotización válida 30 días · IVA no incluido · Términos de servicio aplican.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── BUTTONS ─────────── */}
+      <section className="section-light py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionLabel n="06" title="Buttons — jerarquía clara" />
+          <div className="flex flex-wrap items-center gap-4">
+            <button className="btn-primary">Solicitar cotización <ArrowRight className="w-4 h-4" /></button>
+            <button className="btn-accent">Llamar ahora <Phone className="w-4 h-4" /></button>
+            <button className="btn-secondary">Ver casos</button>
+            <a className="text-sm font-medium text-navy-900 hover:text-accent-500 inline-flex items-center gap-1">
+              Saber más <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+          <p className="mt-4 text-sm text-ink-500 max-w-2xl">
+            Por sección: <strong className="text-navy-900">1 botón primario</strong>,{" "}
+            <strong className="text-navy-900">1 secundario</strong>. El acento naranja se
+            usa solo cuando queremos forzar acción inmediata (ej: "Llamar ahora").
+          </p>
+        </div>
+      </section>
+
+      {/* ─────────── BADGES ─────────── */}
+      <section className="section-surface py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionLabel n="07" title="Badges — señales de confianza" />
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="badge-verified"><ShieldCheck className="w-3.5 h-3.5" /> Empresa verificada</div>
+            <div className="badge-verified"><Check className="w-3.5 h-3.5" /> Cotización con NDA</div>
+            <div className="badge-accent">Nuevo</div>
+            <div className="badge-accent">Pulse · Pre-lanzamiento</div>
+            <div className="badge-neutral">ISO 9001 (en proceso)</div>
+            <div className="badge-neutral">Partner Universal Robots</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── AVATARS ─────────── */}
+      <section className="section-light py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionLabel n="08" title="Avatars — placeholder hasta tener foto del equipo" />
+          <div className="flex items-center gap-4">
+            <div className="avatar-initials w-14 h-14 text-base">AI</div>
+            <div className="avatar-initials w-14 h-14 text-base">JR</div>
+            <div className="avatar-initials w-14 h-14 text-base">MS</div>
+            <div className="avatar-initials w-14 h-14 text-base">DC</div>
+          </div>
+          <p className="mt-4 text-sm text-ink-500 max-w-2xl">
+            Mientras conseguimos sesión fotográfica del equipo, usamos iniciales
+            sobre gradiente navy. El sistema soporta tamaños 10/12/14/16 con
+            tipografía proporcional. Cambio sin esfuerzo a foto real cuando esté.
+          </p>
+        </div>
+      </section>
+
+      {/* ─────────── FOOTER PROTOTYPE ─────────── */}
+      <footer className="section-navy">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-4 gap-10">
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-md bg-white text-navy-900 flex items-center justify-center font-bold">
+                O
+              </div>
+              <div className="font-semibold text-white text-lg">Orza Technologies</div>
+            </div>
+            <p className="text-sm text-navy-100 max-w-md leading-relaxed">
+              Soluciones de automatización industrial, robótica y software
+              operativo para empresas que producen 24/7 en México, Estados
+              Unidos y Latinoamérica.
+            </p>
+            <div className="mt-6 space-y-2 text-sm text-navy-100">
+              <div>Razón social: <span className="text-white">Orza Technologies SAPI de CV</span></div>
+              <div>RFC: <span className="text-navy-300">[en proceso de constitución fiscal]</span></div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" /> Ciudad de México, México
+              </div>
+            </div>
+          </div>
+
           <div>
-            <div className="eyebrow mb-3">Display · Fraunces (variable)</div>
-            <div className="font-display text-7xl text-white tracking-tight leading-[0.9]">
-              Visibilidad operativa.
-            </div>
-            <div className="font-display text-7xl gradient-text tracking-tight leading-[0.9] mt-2">
-              Decisiones automáticas.
-            </div>
+            <div className="text-xs uppercase tracking-widest text-navy-300 mb-4">Contacto directo</div>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="tel:+525620595320" className="flex items-center gap-2 text-white hover:text-accent-500">
+                  <Phone className="w-4 h-4" /> +52 56 2059 5320
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/525620595320" className="flex items-center gap-2 text-white hover:text-accent-500">
+                  <MessageCircle className="w-4 h-4 text-verified-500" /> WhatsApp Business
+                </a>
+              </li>
+              <li>
+                <a href="mailto:sales@orzatech.com" className="flex items-center gap-2 text-white hover:text-accent-500">
+                  <Mail className="w-4 h-4" /> sales@orzatech.com
+                </a>
+              </li>
+              <li className="text-navy-300 text-xs pt-2">
+                Atención: Lun–Vie 9:00–19:00 CT
+              </li>
+            </ul>
           </div>
 
           <div>
-            <div className="eyebrow mb-3">UI · Geist Sans</div>
-            <p className="text-2xl text-white max-w-3xl">
-              Construimos software industrial, robótica e IA para empresas
-              que ya no toleran operar a ciegas.
-            </p>
-            <p className="mt-3 text-base text-text-secondary max-w-3xl">
-              Desde grúas automatizadas hasta agentes de IA conversacionales,
-              cada solución parte del piso de planta — no del laboratorio.
-            </p>
+            <div className="text-xs uppercase tracking-widest text-navy-300 mb-4">Soluciones</div>
+            <ul className="space-y-2 text-sm text-navy-100">
+              <li><a className="hover:text-white">Automatización industrial</a></li>
+              <li><a className="hover:text-white">Robótica</a></li>
+              <li><a className="hover:text-white">Software & IA</a></li>
+              <li><a className="hover:text-white">ORZA Pulse</a></li>
+              <li><a className="hover:text-white">Casos de éxito</a></li>
+            </ul>
           </div>
+        </div>
 
-          <div>
-            <div className="eyebrow mb-3">Data · Geist Mono · tabular numerics</div>
-            <div className="grid grid-cols-3 gap-8">
-              <div>
-                <div className="metric-display text-6xl gradient-text">
-                  187
-                </div>
-                <div className="font-mono text-xs text-text-tertiary mt-2 uppercase tracking-wider">
-                  proyectos
-                </div>
-              </div>
-              <div>
-                <div className="metric-display text-6xl text-white">
-                  62%
-                </div>
-                <div className="font-mono text-xs text-text-tertiary mt-2 uppercase tracking-wider">
-                  Δ ciclo medio
-                </div>
-              </div>
-              <div>
-                <div className="metric-display text-6xl gradient-text-amber">
-                  24/7
-                </div>
-                <div className="font-mono text-xs text-text-tertiary mt-2 uppercase tracking-wider">
-                  uptime SCADA
-                </div>
-              </div>
+        <div className="border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-wrap items-center justify-between gap-4 text-xs text-navy-300">
+            <div>© 2026 Orza Technologies SAPI de CV. Todos los derechos reservados.</div>
+            <div className="flex items-center gap-5">
+              <a className="hover:text-white">Aviso de privacidad</a>
+              <a className="hover:text-white">Términos</a>
+              <a className="hover:text-white">Cookies</a>
             </div>
           </div>
         </div>
-      </Section>
-
-      {/* Shadows */}
-      <Section eyebrow="04 · Depth" title="Compound shadows">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-bg-surface rounded-2xl p-8 shadow-industrial-sm">
-            <div className="font-mono text-xs text-text-tertiary uppercase tracking-wider mb-3">
-              shadow-industrial-sm
-            </div>
-            <p className="text-text-primary">Elemento hairline / chips de baja jerarquía.</p>
-          </div>
-          <div className="bg-bg-surface rounded-2xl p-8 shadow-industrial-md">
-            <div className="font-mono text-xs text-text-tertiary uppercase tracking-wider mb-3">
-              shadow-industrial-md
-            </div>
-            <p className="text-text-primary">Cards estándar. Profundidad de lectura sin gritar.</p>
-          </div>
-          <div className="bg-bg-surface rounded-2xl p-8 shadow-industrial-lg">
-            <div className="font-mono text-xs text-text-tertiary uppercase tracking-wider mb-3">
-              shadow-industrial-lg
-            </div>
-            <p className="text-text-primary">Hero callouts, modales, focus principal.</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Glass variants */}
-      <Section eyebrow="05 · Surface" title="Glass — tinted variants">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-card rounded-2xl p-8">
-            <div className="font-mono text-xs text-text-tertiary uppercase tracking-wider mb-3">
-              .glass-card
-            </div>
-            <p className="text-text-secondary">
-              Default neutral glass. Hover hace tilt hacia azul.
-            </p>
-          </div>
-          <div className="glass-steel rounded-2xl p-8">
-            <div className="font-mono text-xs text-text-tertiary uppercase tracking-wider mb-3">
-              .glass-steel
-            </div>
-            <p className="text-text-secondary">
-              Tinted graphite. Para superficies elevadas con personalidad.
-            </p>
-          </div>
-          <div className="glass-amber rounded-2xl p-8">
-            <div className="font-mono text-xs text-amber-500 uppercase tracking-wider mb-3">
-              .glass-amber
-            </div>
-            <p className="text-text-secondary">
-              Reserved. CTA crítico, badge de novedad, alerta de oportunidad.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Buttons */}
-      <Section eyebrow="06 · CTAs" title="Buttons — jerarquía industrial">
-        <div className="flex flex-wrap gap-4 items-center">
-          <button className="px-6 py-3 rounded-lg bg-eng-blue-500 hover:bg-eng-blue-400 text-white font-medium transition shadow-industrial-md">
-            Hablar con ventas
-          </button>
-          <button className="px-6 py-3 rounded-lg border border-white/15 hover:border-white/30 hover:bg-white/5 text-white font-medium transition">
-            Ver casos
-          </button>
-          <button className="px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-bg-deep font-semibold transition shadow-amber-glow">
-            Cotización urgente
-          </button>
-          <button className="px-6 py-3 rounded-lg bg-transparent text-eng-blue-400 hover:text-white font-medium transition">
-            Saber más →
-          </button>
-        </div>
-      </Section>
-
-      {/* Sample composition: editorial callout */}
-      <Section eyebrow="07 · Composition" title="Editorial callout — preview">
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-7">
-            <div className="eyebrow mb-4 text-amber-500">Caso · Distribuidor eléctrico</div>
-            <blockquote className="font-display text-3xl lg:text-4xl text-white leading-tight">
-              &ldquo;Pasamos de procesar 12 cotizaciones al día a más de 80,
-              sin sumar personal. ORZA Pulse no es un kiosko: es nuestro
-              ejecutivo de mostrador.&rdquo;
-            </blockquote>
-            <div className="mt-6 flex items-center gap-3 text-sm">
-              <div className="w-10 h-10 rounded-full bg-steel-500" />
-              <div>
-                <div className="text-white font-medium">Ing. María Pacheco</div>
-                <div className="text-text-tertiary">Gerente de operaciones · Distribuidora del Norte</div>
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-5 lg:pl-8 lg:border-l border-white/10">
-            <div className="grid grid-cols-2 gap-6">
-              <div>
-                <div className="metric-display text-5xl gradient-text">+560%</div>
-                <div className="text-xs uppercase tracking-wider text-text-tertiary mt-2">
-                  cotizaciones / día
-                </div>
-              </div>
-              <div>
-                <div className="metric-display text-5xl text-white">−40%</div>
-                <div className="text-xs uppercase tracking-wider text-text-tertiary mt-2">
-                  tiempo por cliente
-                </div>
-              </div>
-              <div>
-                <div className="metric-display text-5xl gradient-text-amber">6 sem</div>
-                <div className="text-xs uppercase tracking-wider text-text-tertiary mt-2">
-                  go-live
-                </div>
-              </div>
-              <div>
-                <div className="metric-display text-5xl text-white">100%</div>
-                <div className="text-xs uppercase tracking-wider text-text-tertiary mt-2">
-                  uptime · 90 días
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <div className="hairline mt-16" />
-      <footer className="py-8 text-xs text-text-muted font-mono">
-        Internal · noindex · iterar antes de aplicar a producción
       </footer>
     </div>
   );

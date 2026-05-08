@@ -51,6 +51,46 @@
   --ease-cinematic-in:  cubic-bezier(0.16, 1, 0.3, 1);
   --ease-cinematic-out: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-precision:     cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ─────────────────────────────────────────────────────────
+     TRUST THEME (light) — pivot direction toward
+     "Industrial mexicano confiable" (GBM / SAP / ABB blend).
+     New canonical going forward.
+     ───────────────────────────────────────────────────────── */
+  --trust-bg:           #ffffff;
+  --trust-surface:      #f8fafc;  /* alternate sections */
+  --trust-surface-2:    #f1f5f9;  /* deeper surface */
+  --trust-border:       #e5e7eb;
+  --trust-border-strong:#cbd5e1;
+  --trust-divider:      #f1f5f9;
+
+  /* Navy scale — primary brand */
+  --navy-50:            #f0f4f9;
+  --navy-100:           #d6e0ed;
+  --navy-300:           #6a8caf;
+  --navy-500:           #1f4068;
+  --navy-700:           #102a4c;
+  --navy-900:           #0a2540;  /* primary brand color */
+
+  /* Accent — industrial orange (warm, reserved) */
+  --accent-50:          #fff7ed;
+  --accent-100:         #ffedd5;
+  --accent-500:         #ea580c;  /* primary accent */
+  --accent-600:         #c2410c;
+  --accent-700:         #9a3412;
+
+  /* Trust greens / reds */
+  --verified-500:       #16a34a;  /* "verified", uptime, success badges */
+  --verified-50:        #f0fdf4;
+  --critical-500:       #dc2626;  /* errors, urgent only */
+  --critical-50:        #fef2f2;
+
+  /* Text on light */
+  --ink-900:            #0a2540;  /* same as navy-900 — body titles */
+  --ink-700:            #1e293b;
+  --ink-500:            #475569;
+  --ink-400:            #64748b;
+  --ink-300:            #94a3b8;
 }
 
 @theme inline {
@@ -92,6 +132,196 @@
   --font-sans:    var(--font-geist-sans);
   --font-mono:    var(--font-geist-mono);
   --font-display: var(--font-fraunces);
+
+  /* Trust theme (light) — exposed to Tailwind as utility classes */
+  --color-trust-bg:           var(--trust-bg);
+  --color-trust-surface:      var(--trust-surface);
+  --color-trust-surface-2:    var(--trust-surface-2);
+  --color-trust-border:       var(--trust-border);
+  --color-trust-border-strong:var(--trust-border-strong);
+
+  --color-navy-50:            var(--navy-50);
+  --color-navy-100:           var(--navy-100);
+  --color-navy-300:           var(--navy-300);
+  --color-navy-500:           var(--navy-500);
+  --color-navy-700:           var(--navy-700);
+  --color-navy-900:           var(--navy-900);
+
+  --color-accent-50:          var(--accent-50);
+  --color-accent-100:         var(--accent-100);
+  --color-accent-500:         var(--accent-500);
+  --color-accent-600:         var(--accent-600);
+  --color-accent-700:         var(--accent-700);
+
+  --color-verified-500:       var(--verified-500);
+  --color-verified-50:        var(--verified-50);
+  --color-critical-500:       var(--critical-500);
+  --color-critical-50:        var(--critical-50);
+
+  --color-ink-900:            var(--ink-900);
+  --color-ink-700:            var(--ink-700);
+  --color-ink-500:            var(--ink-500);
+  --color-ink-400:            var(--ink-400);
+  --color-ink-300:            var(--ink-300);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TRUST THEME utilities — light theme components.
+   Used in /styleguide and progressively in migrated pages.
+   ───────────────────────────────────────────────────────────── */
+
+/* Card with subtle border + shadow (corporate-safe, not glassy) */
+.trust-card {
+  background: var(--trust-bg);
+  border: 1px solid var(--trust-border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04),
+              0 0 0 1px rgba(15, 23, 42, 0.02);
+  transition: box-shadow 200ms var(--ease-precision),
+              border-color 200ms var(--ease-precision),
+              transform 200ms var(--ease-precision);
+}
+.trust-card:hover {
+  border-color: var(--trust-border-strong);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08),
+              0 1px 3px rgba(15, 23, 42, 0.06);
+  transform: translateY(-1px);
+}
+
+.trust-card-elevated {
+  background: var(--trust-bg);
+  border: 1px solid var(--trust-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.04),
+              0 12px 24px -8px rgba(15, 23, 42, 0.08),
+              0 0 0 1px rgba(15, 23, 42, 0.02);
+}
+
+/* Buttons (light theme) */
+.btn-primary {
+  background: var(--navy-900);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 180ms var(--ease-precision),
+              transform 120ms var(--ease-precision),
+              box-shadow 200ms var(--ease-precision);
+  box-shadow: 0 1px 2px rgba(10, 37, 64, 0.16);
+}
+.btn-primary:hover {
+  background: var(--navy-700);
+  box-shadow: 0 4px 12px rgba(10, 37, 64, 0.22);
+}
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-accent {
+  background: var(--accent-500);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 180ms var(--ease-precision),
+              box-shadow 200ms var(--ease-precision);
+  box-shadow: 0 1px 2px rgba(234, 88, 12, 0.18),
+              0 4px 12px -2px rgba(234, 88, 12, 0.14);
+}
+.btn-accent:hover { background: var(--accent-600); }
+
+.btn-secondary {
+  background: var(--trust-bg);
+  color: var(--navy-900);
+  border: 1px solid var(--trust-border-strong);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 180ms var(--ease-precision),
+              border-color 180ms var(--ease-precision);
+}
+.btn-secondary:hover {
+  background: var(--trust-surface);
+  border-color: var(--navy-500);
+}
+
+/* Verified badge (security/trust signal) */
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--verified-50);
+  color: var(--verified-500);
+  border: 1px solid #bbf7d0;
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.badge-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--accent-50);
+  color: var(--accent-700);
+  border: 1px solid var(--accent-100);
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-neutral {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--trust-surface);
+  color: var(--ink-500);
+  border: 1px solid var(--trust-border);
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Section helpers (alternate light sections) */
+.section-light    { background: var(--trust-bg); }
+.section-surface  { background: var(--trust-surface); }
+.section-navy     { background: var(--navy-900); color: #ffffff; }
+
+/* Eyebrow on light */
+.eyebrow-light {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-500);
+}
+
+/* Initials avatar (placeholder until real photos) */
+.avatar-initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  background: linear-gradient(135deg, var(--navy-700) 0%, var(--navy-900) 100%);
+  color: #ffffff;
+  letter-spacing: 0.02em;
 }
 
 body {
