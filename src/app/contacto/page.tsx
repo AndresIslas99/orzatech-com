@@ -127,12 +127,6 @@ export default function ContactoPage() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-ink-400 text-xs">RFC</div>
-                  <div className="text-ink-400 italic">
-                    [en proceso de constitución fiscal]
-                  </div>
-                </div>
-                <div>
                   <div className="text-ink-400 text-xs flex items-center gap-1">
                     <MapPin className="w-3 h-3" /> Ubicación
                   </div>

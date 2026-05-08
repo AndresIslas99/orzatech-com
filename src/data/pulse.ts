@@ -146,7 +146,7 @@ export const pulseOriginPhotos = [
   },
   {
     src: "/images/pulse/pulse-foto5.webp",
-    alt: "Equipo de cuatro ingenieros jóvenes de ORZA en nave industrial con laptops y cascos",
+    alt: "Equipo de ingenieros de ORZA en nave industrial con laptops y cascos",
   },
 ];
 
@@ -508,10 +508,10 @@ export const pulseBenefits: PulseBenefit[] = [
 // ── Team ──
 
 export const pulseTeamDescription =
-  "Fundada por cuatro egresados del Tecnológico de Monterrey, ORZA Tech nació en la intersección de la automatización industrial y la inteligencia artificial. Hemos diseñado digital twins para CFE, sistemas de transfer cars pesados, y AMRs con ROS2. ORZA Pulse es el resultado natural de aplicar nuestra experiencia en IA al punto exacto donde la industria encuentra la distribución.";
+  "Fundada por tres socios, ORZA Tech nació en la intersección de la automatización industrial y la inteligencia artificial. Hemos diseñado digital twins para CFE, sistemas de transfer cars pesados, y AMRs con ROS2. ORZA Pulse es el resultado natural de aplicar nuestra experiencia en IA al punto exacto donde la industria encuentra la distribución.";
 
 export const pulseTeamStats: PulseTeamStat[] = [
-  { value: "4", label: "Fundadores Tec" },
+  { value: "3", label: "Socios fundadores" },
   { value: "15+", label: "Proyectos industriales" },
   { value: "2023", label: "Activos desde" },
 ];
@@ -528,7 +528,7 @@ export const pulseTeamPartners = [
 export const pulseTeamPhotos = [
   {
     src: "/images/pulse/pulse-foto10.webp",
-    alt: "Cuatro cofundadores de ORZA en composición dual industria y oficina tecnológica",
+    alt: "Cofundadores de ORZA en composición dual industria y oficina tecnológica",
     tall: true,
   },
   {

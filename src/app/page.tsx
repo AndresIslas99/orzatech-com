@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { generatePageMetadata } from "@/lib/metadata";
 import { featuredProjects, projects } from "@/data/projects";
 import TrustHero from "@/components/trust/TrustHero";
@@ -121,6 +122,42 @@ export default function Home() {
       </section>
 
       <TrustPartnersBar />
+
+      {/* Equipo — strip de prueba social con foto real */}
+      <section className="section-light py-16 border-t border-trust-border">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <div className="eyebrow-light mb-3">El equipo detrás de Orza</div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight max-w-lg">
+              Tres socios firmando la constitución de Orza Technologies ante notario.
+            </h2>
+            <p className="mt-4 text-base text-ink-500 leading-relaxed max-w-lg">
+              No somos una agencia ni un intermediario. Cuando contratas con
+              Orza, hablas directo con los socios responsables del proyecto.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/nosotros" className="btn-primary">
+                Conoce al equipo <ArrowRight className="w-4 h-4" />
+              </Link>
+              <div className="badge-verified self-center">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                SAPI de CV constituida
+              </div>
+            </div>
+          </div>
+          <figure className="lg:col-span-5 order-1 lg:order-2 trust-card-elevated overflow-hidden">
+            <div className="relative aspect-[4/3]">
+              <Image
+                src="/images/team/founders-square.webp"
+                alt="Los tres socios fundadores de Orza Technologies firmando ante notario"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+              />
+            </div>
+          </figure>
+        </div>
+      </section>
 
       <TrustCTASection />
     </>

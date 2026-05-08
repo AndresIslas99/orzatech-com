@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, MessageCircle, Mail, MapPin, ArrowRight } from "lucide-react";
-import { CONTACT, WHATSAPP } from "@/lib/constants";
+import { CONTACT, WHATSAPP, IMAGES } from "@/lib/constants";
 
 export default function TrustFooter() {
   return (
@@ -8,9 +9,15 @@ export default function TrustFooter() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-12 gap-10">
         {/* Brand + razón social */}
         <div className="md:col-span-5">
-          <Link href="/" className="flex items-center gap-3 mb-5">
-            <div className="w-10 h-10 rounded-md bg-white text-navy-900 flex items-center justify-center font-bold text-base">
-              O
+          <Link href="/" className="flex items-center gap-3 mb-5" aria-label="Orza Technologies — inicio">
+            <div className="w-11 h-11 rounded-md bg-white p-1.5 flex items-center justify-center">
+              <Image
+                src={IMAGES.logo}
+                alt="Orza Technologies"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="font-semibold text-white text-lg">Orza Technologies</div>
           </Link>
@@ -23,10 +30,6 @@ export default function TrustFooter() {
             <div>
               <span className="text-navy-300">Razón social:</span>{" "}
               <span className="text-white">Orza Technologies SAPI de CV</span>
-            </div>
-            <div>
-              <span className="text-navy-300">RFC:</span>{" "}
-              <span className="text-navy-300 italic">[en proceso de constitución fiscal]</span>
             </div>
             <div className="flex items-center gap-2 pt-1">
               <MapPin className="w-4 h-4 text-navy-300" />

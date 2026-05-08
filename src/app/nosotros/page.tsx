@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { generatePageMetadata } from "@/lib/metadata";
-import { Linkedin, MapPin, ShieldCheck } from "lucide-react";
+import { MapPin, ShieldCheck } from "lucide-react";
 import TrustPageHero from "@/components/trust/TrustPageHero";
 import TrustSectionHeader from "@/components/trust/TrustSectionHeader";
 import TrustCTASection from "@/components/trust/TrustCTASection";
@@ -8,21 +9,14 @@ import TrustPartnersBar from "@/components/trust/TrustPartnersBar";
 export const metadata = generatePageMetadata({
   title: "Sobre nosotros · El equipo detrás de Orza Technologies",
   description:
-    "Cuatro egresados del Tec de Monterrey construyendo automatización industrial seria en México. Quiénes somos, qué creemos, cómo trabajamos.",
+    "Tres socios construyendo automatización industrial seria en México. Quiénes somos, qué creemos, cómo trabajamos.",
   keywords: [
     "Orza Technologies equipo",
-    "fundadores Tec de Monterrey",
+    "fundadores Orza",
     "automatización industrial México fundadores",
   ],
   path: "/nosotros",
 });
-
-const founders = [
-  { initials: "AI", name: "[Fundador 1]", role: "[Cargo · LinkedIn]" },
-  { initials: "JR", name: "[Fundador 2]", role: "[Cargo · LinkedIn]" },
-  { initials: "MS", name: "[Fundador 3]", role: "[Cargo · LinkedIn]" },
-  { initials: "DC", name: "[Fundador 4]", role: "[Cargo · LinkedIn]" },
-];
 
 const values = [
   {
@@ -81,7 +75,7 @@ export default function NosotrosPage() {
         eyebrow="Sobre nosotros"
         title={
           <>
-            Cuatro ingenieros del Tec de Monterrey construyendo{" "}
+            Tres socios construyendo{" "}
             <span className="text-accent-500">automatización seria en México</span>.
           </>
         }
@@ -119,33 +113,50 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Equipo (placeholder hasta tener fotos reales) */}
+      {/* Equipo — foto real */}
       <section className="section-surface py-20">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <TrustSectionHeader
             eyebrow="El equipo fundador"
-            title="Cuatro caras detrás del trabajo."
-            subtitle="Foto de equipo en preparación. Mientras tanto, así nos verás representados en avatares — cada link te lleva a LinkedIn cuando esté listo."
+            title="Tres socios. Una sola firma."
+            subtitle="Foto el día que constituimos Orza Technologies SAPI de CV ante notario. Si quieres conocer a alguno en específico, escríbenos."
+            align="left"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {founders.map((f) => (
-              <div key={f.initials} className="trust-card p-6 text-center">
-                <div className="avatar-initials w-20 h-20 text-2xl mx-auto">
-                  {f.initials}
-                </div>
-                <div className="mt-4 font-semibold text-navy-900">{f.name}</div>
-                <div className="text-sm text-ink-500 mt-1">{f.role}</div>
-                <a className="mt-3 inline-flex items-center gap-1 text-xs text-ink-400 hover:text-accent-500 transition">
-                  <Linkedin className="w-3.5 h-3.5" /> LinkedIn (próximamente)
-                </a>
+          <div className="grid lg:grid-cols-12 gap-8 items-start">
+            <figure className="lg:col-span-8 trust-card-elevated overflow-hidden">
+              <div className="relative aspect-[4/3] bg-trust-surface-2">
+                <Image
+                  src="/images/team/founders-notaria.webp"
+                  alt="Los tres socios fundadores de Orza Technologies firmando la constitución de la empresa ante notario en Ciudad de México"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                  priority
+                />
               </div>
-            ))}
+              <figcaption className="px-5 py-4 text-xs text-ink-400 font-mono uppercase tracking-widest">
+                Constitución ante notario · CDMX · 2025
+              </figcaption>
+            </figure>
+            <div className="lg:col-span-4 space-y-4">
+              <div className="trust-card p-5">
+                <div className="text-3xl font-semibold text-navy-900 tracking-tight">3</div>
+                <div className="text-sm text-ink-500 mt-1">Socios fundadores</div>
+              </div>
+              <div className="trust-card p-5">
+                <div className="text-3xl font-semibold text-navy-900 tracking-tight">100%</div>
+                <div className="text-sm text-ink-500 mt-1">
+                  Ingeniería propia · sin subcontratación crítica
+                </div>
+              </div>
+              <div className="trust-card p-5">
+                <div className="text-3xl font-semibold text-navy-900 tracking-tight">CDMX</div>
+                <div className="text-sm text-ink-500 mt-1">
+                  Operación física en CDMX · servimos toda la República
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="mt-8 text-center text-sm text-ink-400 max-w-2xl mx-auto">
-            Estamos coordinando una sesión fotográfica del equipo. Hasta
-            entonces, los avatares con iniciales son nuestro placeholder.
-            ¿Quieres conocer a alguien específico? Escríbenos.
-          </p>
         </div>
       </section>
 
@@ -199,9 +210,9 @@ export default function NosotrosPage() {
                 </div>
               </div>
               <div>
-                <div className="text-ink-400 text-xs uppercase tracking-wider">RFC</div>
-                <div className="text-ink-400 italic mt-1">
-                  [en proceso de constitución fiscal]
+                <div className="text-ink-400 text-xs uppercase tracking-wider">Estructura</div>
+                <div className="text-navy-900 font-medium mt-1">
+                  Sociedad Anónima Promotora de Inversión de Capital Variable
                 </div>
               </div>
               <div>

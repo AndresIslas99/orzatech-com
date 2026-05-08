@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Phone, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
-import { CONTACT } from "@/lib/constants";
+import { CONTACT, IMAGES } from "@/lib/constants";
 
 const navItems = [
   {
@@ -33,10 +34,15 @@ export default function TrustNavbar() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-trust-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="w-9 h-9 rounded-md bg-navy-900 flex items-center justify-center text-white font-bold text-sm tracking-tight">
-            O
-          </div>
+        <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Orza Technologies — inicio">
+          <Image
+            src={IMAGES.logo}
+            alt="Orza Technologies"
+            width={36}
+            height={36}
+            className="w-9 h-9 object-contain"
+            priority
+          />
           <span className="font-semibold text-navy-900 tracking-tight text-base sm:text-lg">
             Orza <span className="hidden sm:inline">Technologies</span>
           </span>
