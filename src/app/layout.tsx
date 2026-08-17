@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { SITE, CONTACT } from "@/lib/constants";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Tipografía heredada de pulse.orzatech.com: Archivo para UI/display,
+// IBM Plex Mono para datos, cifras y eyebrows técnicos.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 const ogImage = `${SITE.url}/images/og-image.jpg`;
@@ -99,7 +102,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${archivo.variable} ${plexMono.variable} antialiased`}
       >
         <SiteChrome>{children}</SiteChrome>
       </body>

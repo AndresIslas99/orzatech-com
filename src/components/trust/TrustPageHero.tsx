@@ -25,7 +25,7 @@ export default function TrustPageHero({
     <section className="section-light pt-12 pb-12 md:pt-16 md:pb-16 border-b border-trust-border">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <div className="eyebrow-light mb-4">{eyebrow}</div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-navy-900 tracking-tight leading-[1.05] max-w-4xl">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-[-0.02em] leading-[1.04] max-w-4xl">
           {title}
         </h1>
         <p className="mt-6 text-lg text-ink-500 max-w-2xl leading-relaxed">

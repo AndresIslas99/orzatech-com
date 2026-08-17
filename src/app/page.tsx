@@ -13,7 +13,7 @@ import TrustPartnersBar from "@/components/trust/TrustPartnersBar";
 import TrustCTASection from "@/components/trust/TrustCTASection";
 
 export const metadata = generatePageMetadata({
-  title: "Automatización Industrial Confiable | Orza Technologies",
+  title: "Automatización Industrial Confiable",
   description:
     "Automatización industrial, robótica y software de visibilidad operativa para empresas en México, US y LATAM. Cotización formal en menos de 48 horas. Empresa SAPI de CV.",
   keywords: [
@@ -40,6 +40,7 @@ export default function Home() {
 
       {/* Real testimonial — Hugo García / Limser Cranes */}
       <TrustTestimonialBlock
+        chapter="01 / 04"
         eyebrow="Caso real · Industria metalúrgica"
         quote="Trabajamos con Orza para automatizar nuestro transfer car de 60 toneladas. La cotización fue clara, los tiempos se cumplieron y el resultado eliminó los incidentes de seguridad que arrastrábamos."
         pendingReview
@@ -48,7 +49,7 @@ export default function Home() {
         authorRole="Gerente de Proyectos"
         authorCompany="Limser Cranes"
         durationLabel={`Proyecto entregado en ${limserProject.duration}`}
-        caseHref="/proyectos"
+        caseHref="/proyectos/transfer-car"
         metrics={[
           { label: "Incidentes de seguridad", value: "0", highlight: true },
           { label: "Ciclos registrados", value: "100%" },
@@ -61,8 +62,11 @@ export default function Home() {
       <section className="section-surface py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="eyebrow-light mb-3">Soluciones</div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight">
+            <div className="mb-3 flex items-baseline gap-2.5 justify-center">
+              <span className="eyebrow-chapter">02 / 04</span>
+              <span className="eyebrow-light">Soluciones</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight">
               Tres formas de empezar a automatizar tu operación.
             </h2>
             <p className="mt-4 text-base text-ink-500">
@@ -101,8 +105,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
             <div>
-              <div className="eyebrow-light mb-3">Casos de éxito</div>
-              <h2 className="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight max-w-xl">
+              <div className="mb-3 flex items-baseline gap-2.5">
+                <span className="eyebrow-chapter">03 / 04</span>
+                <span className="eyebrow-light">Casos de éxito</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight max-w-xl">
                 Proyectos entregados con números, no con promesas.
               </h2>
             </div>
@@ -128,8 +135,11 @@ export default function Home() {
       <section className="section-light py-16 border-t border-trust-border">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <div className="eyebrow-light mb-3">El equipo detrás de Orza</div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight max-w-lg">
+            <div className="mb-3 flex items-baseline gap-2.5">
+              <span className="eyebrow-chapter">04 / 04</span>
+              <span className="eyebrow-light">El equipo detrás de Orza</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-navy-900 tracking-tight max-w-lg">
               Tres socios firmando la constitución de Orza Technologies ante notario.
             </h2>
             <p className="mt-4 text-base text-ink-500 leading-relaxed max-w-lg">

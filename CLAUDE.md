@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Next.js 16 multi-page site for **Orza Technologies SAPI de CV** — industrial automation, robotics, and AI solutions for industrial buyers in MX, US and LATAM. Trust-first design ("Industrial mexicano confiable" — light theme, navy + orange, sober B2B aesthetic).
+Next.js 16 multi-page site for **Orza Technologies SAPI de CV** — industrial automation, robotics, and AI solutions for industrial buyers in MX, US and LATAM. Trust-first design ("Industrial mexicano confiable" — light theme, navy + copper + warm paper, sober B2B aesthetic).
 
 **Live site:** https://orzatech.com (deployed via GitHub Pages from this repo's `main` branch)
 
@@ -51,7 +51,8 @@ npm run build && npx serve out -p 3000
 | `/` | Home — trust-first | TrustHero, ClientBar, Limser testimonial, 3 verticals, featured projects, partners, CTA |
 | `/industria` | Industrial automation | TrustPageHero, 3 trust pillars, Limser case, 3 services, 5 projects, partners, CTA |
 | `/software` | Software & IA | TrustPageHero, problem list, AGNOR case, 5 sub-services, public pricing (4 tiers), 3-step process, CTA |
-| `/pulse` | ORZA Pulse product | Custom hero with chat preview, problem grid, solution+steps, AI tech, BI dashboard (static showcase), ROI+comparison+timeline, origin+team, CTA |
+| `/pulse` | Redirect to pulse.orzatech.com | Meta refresh + canonical to the subdomain (product lives in its own Vite/React app on the VPS). Original marketing content preserved at commit 9c3bfa7 |
+| `/proyectos/[slug]` | Project case detail (6 pages via generateStaticParams) | Back link, eyebrow+duration, H1, tags, hero image, mono results tiles, challenge/solution on paper band, gallery, related projects, CTA |
 | `/proyectos` | All cases grid | TrustPageHero, 6 projects, CTA |
 | `/nosotros` | About / manifesto | TrustPageHero, 4 values, founders (avatar placeholders), 4-year timeline, corporate data, partners, CTA |
 | `/contacto` | Contact | TrustPageHero, contact form, side panel with 3 direct channels + corporate data |
@@ -59,7 +60,7 @@ npm run build && npx serve out -p 3000
 
 ### Layout architecture
 
-**`src/app/layout.tsx`** is the root layout — minimal: html/body wrappers, fonts (Geist Sans + Geist Mono), Organization JSON-LD, and renders `<SiteChrome>{children}</SiteChrome>`.
+**`src/app/layout.tsx`** is the root layout — minimal: html/body wrappers, fonts (Archivo + IBM Plex Mono), Organization JSON-LD, and renders `<SiteChrome>{children}</SiteChrome>`.
 
 **`src/components/layout/SiteChrome.tsx`** is a client component that conditionally renders chrome based on pathname:
 - `/styleguide` → `<main>` only (no header/footer — styleguide has its own)
@@ -118,35 +119,41 @@ Centralized: SITE, CONTACT (phone, email, location), WHATSAPP (with `getUrl()`),
 
 `generatePageMetadata()` helper for per-page Metadata with OG tags + canonical URLs.
 
-## Design system — Trust theme
+## Design system — Pulse language
 
-**Reference:** GBM + Caterpillar + Banorte for B2B Mexican industrial buyers. Light, conservative, predictable. NO dark mode for marketing pages.
+**Reference:** pulse.orzatech.com is the design source of truth — the corporate site inherits its language. Light, warm, editorial-industrial. NO dark mode for marketing pages.
 
 ### Tokens (`src/app/globals.css`)
 
 ```
-Surfaces: #ffffff (bg) · #f8fafc (surface) · #f1f5f9 (surface-2)
-Borders:  #e5e7eb (default) · #cbd5e1 (strong)
-Navy:     50, 100, 300, 500, 700, 900 (#0a2540 = primary brand)
-Accent:   50, 100, 500 (#ea580c industrial orange) — RESERVED, max 1 per section
-Status:   verified-500 (#16a34a) · critical-500 (#dc2626)
-Ink:      900, 700, 500, 400, 300 (text scale)
-Fonts:    Geist Sans (UI), Geist Mono (eyebrow/data)
+Surfaces: #ffffff (bg) · #f2f4f8 (surface) · #eaeef4 (surface-2)
+Paper:    #f6f1ea (paper) · #fbfaf6 (paper-bright) · #e4e0d5 (paper-border) — warm bands for human moments
+Borders:  #dce2ec (default) · #b9c4d6 (strong)
+Navy:     50…900, 950 (#0f2547 = primary brand, #141c30 = footer/deep)
+Accent:   copper 50, 100, 300, 500, 600, 700 (#b4571c copper, #8a4310 copper-ink for CTAs/eyebrows) — RESERVED, max 1 per section
+Status:   verified-500 (#17694a) · critical-500 (#b23327)
+Ink:      900 #1d2b3f, 700, 500 #51617a, 400, 300 (text scale)
+Fonts:    Archivo (UI/display, extrabold tight-tracking headlines), IBM Plex Mono (data/cifras via .data-mono, chapter numbers via .eyebrow-chapter)
+Shadows:  --shadow-doc / --shadow-float (documentary, navy-tinted)
+Radius:   cards 12/16 · buttons 10
 ```
 
 ### Utilities
 
-- `.trust-card` / `.trust-card-elevated` — light cards with subtle border + shadow
-- `.btn-primary` (navy) / `.btn-accent` (orange) / `.btn-secondary` (outline)
+- `.trust-card` / `.trust-card-elevated` / `.paper-card` — cards with documentary shadow (paper = warm variant)
+- `.btn-primary` (navy) / `.btn-accent` (copper #8a4310) / `.btn-secondary` (outline)
 - `.badge-verified` / `.badge-accent` / `.badge-neutral`
-- `.section-light` / `.section-surface` / `.section-navy`
-- `.eyebrow-light` — uppercase mono accent label
+- `.section-light` / `.section-surface` / `.section-paper` / `.section-navy` / `.section-navy-deep`
+- `.eyebrow-light` — uppercase Archivo bold copper label · `.eyebrow-chapter` — mono chapter number ("01 / 04")
+- `.data-mono` — IBM Plex Mono for stat/metric values (tabular nums)
 - `.avatar-initials` — placeholder avatar with navy gradient
 - `.shadow-industrial-md` — compound shadow for highlight pricing tier
 
 ### Conventions
 
-- One primary CTA per section. Orange accent appears max once per section.
+- One primary CTA per section. Copper accent appears max once per section.
+- Home sections carry chapter numbering ("01 / 04" in .eyebrow-chapter mono) — home only; interior pages use plain eyebrows.
+- Stat/metric values use .data-mono (IBM Plex Mono), never display font.
 - Trust signals visible above fold (badge SAPI, stats, phone, location).
 - Real data only — testimonials with real names, metrics, and `pendingReview` flag if quote not yet validated by client.
 - Footer is heavy — razón social, RFC, location, 3 contact channels, hours, legal.
@@ -214,6 +221,8 @@ Since `output: 'export'`:
 - `new Date()` in server components runs at build time only
 
 ## Migration history
+
+- **2026-08-17** — Pulse design language migration: Archivo + IBM Plex Mono replace Geist, copper replaces orange, deep navy #0f2547/#141c30, warm paper bands, documentary shadows, home chapter numbering. New /proyectos/[slug] case pages (fixes 6 dead links). /pulse now redirects to pulse.orzatech.com. Actions bumped to checkout@v7/setup-node@v7/upload-pages-artifact@v5/deploy-pages@v5, CI node 22.
 
 - **2026-05-08** — Trust-first migration complete: all 7 pages on light theme, 29 legacy components deleted, Fraunces font dropped, dark theme tokens removed, JSON-LD schemas added.
 - **2026-05-07** — GitHub Pages migration from Cloudflare Worker (steep-field-a224 was the prior backend).

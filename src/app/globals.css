@@ -1,45 +1,59 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────
-   Orza Tech — Trust theme tokens
-   "Industrial mexicano confiable" — light, navy, orange.
+   Orza Tech — Pulse design language
+   Heredado de pulse.orzatech.com: navy profundo, cobre, papel
+   cálido. Archivo para UI/display, IBM Plex Mono para datos.
    ───────────────────────────────────────────────────────────── */
 :root {
-  /* Surfaces */
+  /* Surfaces — blanco + azul frío + papel cálido */
   --trust-bg:           #ffffff;
-  --trust-surface:      #f8fafc;
-  --trust-surface-2:    #f1f5f9;
-  --trust-border:       #e5e7eb;
-  --trust-border-strong:#cbd5e1;
-  --trust-divider:      #f1f5f9;
+  --trust-surface:      #f2f4f8;
+  --trust-surface-2:    #eaeef4;
+  --trust-border:       #dce2ec;
+  --trust-border-strong:#b9c4d6;
+  --trust-divider:      #eaeef4;
 
-  /* Navy — primary brand */
-  --navy-50:            #f0f4f9;
-  --navy-100:           #d6e0ed;
-  --navy-300:           #6a8caf;
-  --navy-500:           #1f4068;
-  --navy-700:           #102a4c;
-  --navy-900:           #0a2540;
+  /* Papel — banda cálida para momentos humanos (testimonios, equipo) */
+  --paper:              #f6f1ea;
+  --paper-bright:       #fbfaf6;
+  --paper-border:       #e4e0d5;
 
-  /* Accent — industrial orange (reserved use) */
-  --accent-50:          #fff7ed;
-  --accent-100:         #ffedd5;
-  --accent-500:         #ea580c;
-  --accent-600:         #c2410c;
-  --accent-700:         #9a3412;
+  /* Navy — marca (Pulse --brand / --lp-navy-deep) */
+  --navy-50:            #f0f3f8;
+  --navy-100:           #d9e1ee;
+  --navy-300:           #6e87ac;
+  --navy-500:           #35507e;
+  --navy-700:           #1c3a6b;
+  --navy-900:           #0f2547;
+  --navy-950:           #141c30;
 
-  /* Status */
-  --verified-500:       #16a34a;
-  --verified-50:        #f0fdf4;
-  --critical-500:       #dc2626;
-  --critical-50:        #fef2f2;
+  /* Accent — cobre (Pulse --copper). Uso reservado. */
+  --accent-50:          #f6e7da;
+  --accent-100:         #efd6be;
+  --accent-300:         #d98e52;
+  --accent-500:         #b4571c;
+  --accent-600:         #9f4c15;
+  --accent-700:         #8a4310;
 
-  /* Text on light */
-  --ink-900:            #0a2540;
-  --ink-700:            #1e293b;
-  --ink-500:            #475569;
-  --ink-400:            #64748b;
-  --ink-300:            #94a3b8;
+  /* Status (Pulse ok/danger) */
+  --verified-500:       #17694a;
+  --verified-50:        #e0f2e9;
+  --verified-100:       #bfe3d0;
+  --critical-500:       #b23327;
+  --critical-50:        #fbe7e5;
+
+  /* Text on light (Pulse --ink / --ink-soft) */
+  --ink-900:            #1d2b3f;
+  --ink-700:            #2c3c55;
+  --ink-500:            #51617a;
+  --ink-400:            #5d6d87;
+  --ink-300:            #9aa6ba;
+
+  /* Sombra documental (Pulse --shadow-doc / --shadow-float) */
+  --shadow-doc:   0 1px 2px rgba(29, 43, 63, 0.06),
+                  0 8px 28px rgba(29, 43, 63, 0.10);
+  --shadow-float: 0 4px 16px rgba(29, 43, 63, 0.10);
 
   /* Motion */
   --ease-cinematic-in:  cubic-bezier(0.16, 1, 0.3, 1);
@@ -53,6 +67,11 @@
   --color-trust-surface-2:    var(--trust-surface-2);
   --color-trust-border:       var(--trust-border);
   --color-trust-border-strong:var(--trust-border-strong);
+  --color-trust-divider:      var(--trust-divider);
+
+  --color-paper:              var(--paper);
+  --color-paper-bright:       var(--paper-bright);
+  --color-paper-border:       var(--paper-border);
 
   --color-navy-50:            var(--navy-50);
   --color-navy-100:           var(--navy-100);
@@ -60,9 +79,11 @@
   --color-navy-500:           var(--navy-500);
   --color-navy-700:           var(--navy-700);
   --color-navy-900:           var(--navy-900);
+  --color-navy-950:           var(--navy-950);
 
   --color-accent-50:          var(--accent-50);
   --color-accent-100:         var(--accent-100);
+  --color-accent-300:         var(--accent-300);
   --color-accent-500:         var(--accent-500);
   --color-accent-600:         var(--accent-600);
   --color-accent-700:         var(--accent-700);
@@ -78,14 +99,14 @@
   --color-ink-400:            var(--ink-400);
   --color-ink-300:            var(--ink-300);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-plex-mono);
 }
 
 body {
   background: var(--trust-bg);
   color: var(--ink-700);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-archivo), system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -101,30 +122,50 @@ html { scroll-behavior: smooth; }
    Components
    ───────────────────────────────────────────────────────────── */
 
-.eyebrow-light {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent-500);
+/* Eyebrow — Archivo bold tracking ancho, cobre tinta (como Pulse).
+   En @layer components para que utilidades (p. ej. text-ink-400) puedan
+   sobreescribir el color — CSS sin capa siempre gana a las utilidades. */
+@layer components {
+  .eyebrow-light {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-700);
+  }
 }
 
-/* Cards */
+/* Numeración de capítulo — IBM Plex Mono, precede al eyebrow en home */
+.eyebrow-chapter {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ink-400);
+}
+
+/* Datos y cifras — IBM Plex Mono (rol --font-data de Pulse) */
+.data-mono {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cards — sombra documental */
 .trust-card {
   background: var(--trust-bg);
   border: 1px solid var(--trust-border);
   border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04),
-              0 0 0 1px rgba(15, 23, 42, 0.02);
+  box-shadow: var(--shadow-doc);
   transition: box-shadow 200ms var(--ease-precision),
               border-color 200ms var(--ease-precision),
               transform 200ms var(--ease-precision);
 }
 .trust-card:hover {
   border-color: var(--trust-border-strong);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08),
-              0 1px 3px rgba(15, 23, 42, 0.06);
+  box-shadow: var(--shadow-float),
+              0 12px 36px rgba(29, 43, 63, 0.12);
   transform: translateY(-1px);
 }
 
@@ -132,18 +173,25 @@ html { scroll-behavior: smooth; }
   background: var(--trust-bg);
   border: 1px solid var(--trust-border);
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.04),
-              0 12px 24px -8px rgba(15, 23, 42, 0.08),
-              0 0 0 1px rgba(15, 23, 42, 0.02);
+  box-shadow: 0 4px 6px rgba(15, 37, 71, 0.05),
+              0 16px 40px -8px rgba(15, 37, 71, 0.12);
 }
 
-/* Buttons */
+/* Card papel — variante cálida para momentos humanos */
+.paper-card {
+  background: var(--paper-bright);
+  border: 1px solid var(--paper-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-doc);
+}
+
+/* Buttons — radio 10 como Pulse */
 .btn-primary {
   background: var(--navy-900);
   color: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 0.75rem 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
@@ -151,18 +199,19 @@ html { scroll-behavior: smooth; }
   transition: background 180ms var(--ease-precision),
               transform 120ms var(--ease-precision),
               box-shadow 200ms var(--ease-precision);
-  box-shadow: 0 1px 2px rgba(10, 37, 64, 0.16);
+  box-shadow: 0 1px 2px rgba(15, 37, 71, 0.16);
 }
 .btn-primary:hover {
   background: var(--navy-700);
-  box-shadow: 0 4px 12px rgba(10, 37, 64, 0.22);
+  box-shadow: 0 4px 12px rgba(15, 37, 71, 0.22);
 }
 .btn-primary:active { transform: translateY(1px); }
 
+/* CTA cobre — el botón de acción de Pulse (#8A4310 → #B4571C) */
 .btn-accent {
-  background: var(--accent-500);
+  background: var(--accent-700);
   color: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   font-size: 0.95rem;
@@ -171,16 +220,16 @@ html { scroll-behavior: smooth; }
   gap: 0.5rem;
   transition: background 180ms var(--ease-precision),
               box-shadow 200ms var(--ease-precision);
-  box-shadow: 0 1px 2px rgba(234, 88, 12, 0.18),
-              0 4px 12px -2px rgba(234, 88, 12, 0.14);
+  box-shadow: 0 1px 2px rgba(138, 67, 16, 0.20),
+              0 4px 12px -2px rgba(138, 67, 16, 0.16);
 }
-.btn-accent:hover { background: var(--accent-600); }
+.btn-accent:hover { background: var(--accent-500); }
 
 .btn-secondary {
   background: var(--trust-bg);
   color: var(--navy-900);
   border: 1px solid var(--trust-border-strong);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 0.75rem 1.5rem;
   font-weight: 500;
   font-size: 0.95rem;
@@ -188,11 +237,12 @@ html { scroll-behavior: smooth; }
   align-items: center;
   gap: 0.5rem;
   transition: background 180ms var(--ease-precision),
-              border-color 180ms var(--ease-precision);
+              border-color 180ms var(--ease-precision),
+              color 180ms var(--ease-precision);
 }
 .btn-secondary:hover {
-  background: var(--trust-surface);
-  border-color: var(--navy-500);
+  background: var(--paper-bright);
+  border-color: var(--accent-500);
 }
 
 /* Badges */
@@ -202,7 +252,7 @@ html { scroll-behavior: smooth; }
   gap: 0.375rem;
   background: var(--verified-50);
   color: var(--verified-500);
-  border: 1px solid #bbf7d0;
+  border: 1px solid var(--verified-100);
   border-radius: 9999px;
   padding: 0.25rem 0.625rem;
   font-size: 0.75rem;
@@ -236,18 +286,20 @@ html { scroll-behavior: smooth; }
   font-weight: 500;
 }
 
-/* Sections */
+/* Sections — frío / cálido / oscuro */
 .section-light    { background: var(--trust-bg); }
 .section-surface  { background: var(--trust-surface); }
+.section-paper    { background: var(--paper); }
 .section-navy     { background: var(--navy-900); color: #ffffff; }
+.section-navy-deep{ background: var(--navy-950); color: #ffffff; }
 
-/* Compound shadow (used by pricing highlight tier) */
+/* Compound shadow (pricing highlight) — retonado a navy + cobre */
 .shadow-industrial-md {
   box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.3),
-    0 12px 32px -8px rgba(0, 0, 0, 0.5),
+    0 4px 6px rgba(15, 37, 71, 0.28),
+    0 12px 32px -8px rgba(15, 37, 71, 0.45),
     0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 0 32px rgba(0, 102, 255, 0.08);
+    0 0 32px rgba(217, 142, 82, 0.10);
 }
 
 /* Initials avatar */
@@ -278,7 +330,7 @@ html { scroll-behavior: smooth; }
 }
 
 dialog { padding: 0; border: none; background: transparent; color: inherit; }
-dialog::backdrop { background: rgba(10, 37, 64, 0.4); backdrop-filter: blur(2px); }
+dialog::backdrop { background: rgba(15, 37, 71, 0.4); backdrop-filter: blur(2px); }
 
 @media (prefers-reduced-motion: reduce) {
   .page-enter { animation: none; }

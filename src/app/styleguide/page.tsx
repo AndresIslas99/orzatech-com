@@ -13,7 +13,7 @@ const clientLogos = [
   { name: "Kiewit", src: "/images/clients/Kiewit.png", alt: "Kiewit" },
   { name: "Harsco", src: "/images/clients/Harsco.png", alt: "Harsco Rail" },
   { name: "AgNor",  src: "/images/clients/AgNor.png",  alt: "AgNor" },
-  { name: "Limser", src: "/images/clients/LIMSER LOGO.png", alt: "Limser Cranes" },
+  { name: "Limser", src: "/images/clients/limser-logo.png", alt: "Limser Cranes" },
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -26,7 +26,7 @@ function SectionLabel({ n, title }: { n: string; title: string }) {
       <div className="font-mono text-xs text-ink-400 uppercase tracking-wider mb-2">
         {n} · Styleguide
       </div>
-      <h2 className="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight">
+      <h2 className="text-2xl md:text-3xl font-extrabold text-navy-900 tracking-tight">
         {title}
       </h2>
     </div>
@@ -51,30 +51,34 @@ function Swatch({ name, value, role }: { name: string; value: string; role: stri
 
 const surfaces = [
   { name: "trust-bg",        value: "#ffffff", role: "Page background" },
-  { name: "trust-surface",   value: "#f8fafc", role: "Alternate sections" },
-  { name: "trust-surface-2", value: "#f1f5f9", role: "Sunken surfaces" },
-  { name: "trust-border",    value: "#e5e7eb", role: "Default borders" },
+  { name: "trust-surface",   value: "#f2f4f8", role: "Alternate sections (frío)" },
+  { name: "trust-surface-2", value: "#eaeef4", role: "Sunken surfaces" },
+  { name: "paper",           value: "#f6f1ea", role: "Banda cálida — momentos humanos" },
+  { name: "trust-border",    value: "#dce2ec", role: "Default borders" },
 ];
 
 const navyScale = [
-  { name: "navy-900", value: "#0a2540", role: "Primary brand · titles" },
-  { name: "navy-700", value: "#102a4c", role: "Hover / pressed" },
-  { name: "navy-500", value: "#1f4068", role: "Mid-tone" },
-  { name: "navy-300", value: "#6a8caf", role: "Soft accent text" },
+  { name: "navy-950", value: "#141c30", role: "Footer / deep" },
+  { name: "navy-900", value: "#0f2547", role: "Primary brand · titles" },
+  { name: "navy-700", value: "#1c3a6b", role: "Hover / pressed" },
+  { name: "navy-500", value: "#35507e", role: "Mid-tone" },
+  { name: "navy-300", value: "#6e87ac", role: "Soft accent text" },
 ];
 
 const accents = [
-  { name: "accent-500",   value: "#ea580c", role: "Industrial orange — CTA reservado" },
-  { name: "verified-500", value: "#16a34a", role: "Verificado · uptime · garantía" },
-  { name: "critical-500", value: "#dc2626", role: "Solo errores críticos" },
+  { name: "accent-700",   value: "#8a4310", role: "Cobre tinta — CTA / eyebrows" },
+  { name: "accent-500",   value: "#b4571c", role: "Cobre — hover / énfasis" },
+  { name: "accent-300",   value: "#d98e52", role: "Cobre brillante — sobre navy" },
+  { name: "verified-500", value: "#17694a", role: "Verificado · uptime · garantía" },
+  { name: "critical-500", value: "#b23327", role: "Solo errores críticos" },
 ];
 
 const inkScale = [
-  { name: "ink-900", value: "#0a2540", role: "Body title (= navy-900)" },
-  { name: "ink-700", value: "#1e293b", role: "Body text" },
-  { name: "ink-500", value: "#475569", role: "Secondary text" },
-  { name: "ink-400", value: "#64748b", role: "Captions / metadata" },
-  { name: "ink-300", value: "#94a3b8", role: "Disabled / hint" },
+  { name: "ink-900", value: "#1d2b3f", role: "Body title" },
+  { name: "ink-700", value: "#2c3c55", role: "Body text" },
+  { name: "ink-500", value: "#51617a", role: "Secondary text" },
+  { name: "ink-400", value: "#6e7d95", role: "Captions / metadata" },
+  { name: "ink-300", value: "#9aa6ba", role: "Disabled / hint" },
 ];
 
 export default function StyleguidePage() {
@@ -120,7 +124,7 @@ export default function StyleguidePage() {
               <ShieldCheck className="w-3.5 h-3.5" />
               Empresa constituida · SAPI de CV
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-navy-900 tracking-tight leading-[1.05]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-tight leading-[1.05]">
               Automatizamos plantas industriales.{" "}
               <span className="text-accent-500">Sin sorpresas.</span>
             </h1>
@@ -164,19 +168,19 @@ export default function StyleguidePage() {
               </div>
               <div className="grid grid-cols-2 gap-5">
                 <div>
-                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">24/7</div>
+                  <div className="text-3xl data-mono text-navy-900">24/7</div>
                   <div className="text-xs text-ink-500 mt-1">Visibilidad operativa</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">+20%</div>
+                  <div className="text-3xl data-mono text-navy-900">+20%</div>
                   <div className="text-xs text-ink-500 mt-1">Mejora OEE promedio</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">&lt;30</div>
+                  <div className="text-3xl data-mono text-navy-900">&lt;30</div>
                   <div className="text-xs text-ink-500 mt-1">Días a producción</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">3</div>
+                  <div className="text-3xl data-mono text-navy-900">3</div>
                   <div className="text-xs text-ink-500 mt-1">Países (MX · US · LATAM)</div>
                 </div>
               </div>
@@ -325,17 +329,17 @@ export default function StyleguidePage() {
       {/* ─────────── TYPOGRAPHY ─────────── */}
       <section className="section-surface py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionLabel n="05" title="Typography — Geist Sans (sin serif)" />
+          <SectionLabel n="05" title="Typography — Archivo + IBM Plex Mono" />
           <div className="space-y-10">
             <div>
-              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Display · 6xl · semibold</div>
-              <div className="text-5xl md:text-6xl font-semibold text-navy-900 tracking-tight leading-[1.05]">
+              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Display · 6xl · extrabold</div>
+              <div className="text-5xl md:text-6xl font-extrabold text-navy-900 tracking-tight leading-[1.05]">
                 Visibilidad operativa.<br/>Decisiones automáticas.
               </div>
             </div>
             <div>
-              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Heading · 3xl · semibold</div>
-              <div className="text-3xl font-semibold text-navy-900 tracking-tight">
+              <div className="font-mono text-xs text-ink-400 uppercase tracking-widest mb-2">Data · 3xl · IBM Plex Mono (.data-mono)</div>
+              <div className="text-3xl data-mono text-navy-900">
                 Software industrial certificado para Norteamérica
               </div>
             </div>

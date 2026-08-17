@@ -140,17 +140,17 @@ export default function NosotrosPage() {
             </figure>
             <div className="lg:col-span-4 space-y-4">
               <div className="trust-card p-5">
-                <div className="text-3xl font-semibold text-navy-900 tracking-tight">3</div>
+                <div className="text-3xl data-mono text-navy-900">3</div>
                 <div className="text-sm text-ink-500 mt-1">Socios fundadores</div>
               </div>
               <div className="trust-card p-5">
-                <div className="text-3xl font-semibold text-navy-900 tracking-tight">100%</div>
+                <div className="text-3xl data-mono text-navy-900">100%</div>
                 <div className="text-sm text-ink-500 mt-1">
                   Ingeniería propia · sin subcontratación crítica
                 </div>
               </div>
               <div className="trust-card p-5">
-                <div className="text-3xl font-semibold text-navy-900 tracking-tight">CDMX</div>
+                <div className="text-3xl data-mono text-navy-900">CDMX</div>
                 <div className="text-sm text-ink-500 mt-1">
                   Operación física en CDMX · servimos toda la República
                 </div>

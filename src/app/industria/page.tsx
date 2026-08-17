@@ -13,7 +13,7 @@ import TrustCTASection from "@/components/trust/TrustCTASection";
 import { ShieldCheck, Wrench, Layers } from "lucide-react";
 
 export const metadata = generatePageMetadata({
-  title: "Automatización industrial certificada | Orza Technologies",
+  title: "Automatización industrial certificada",
   description:
     "Brazos robóticos, AGV/AMR, automatización de grúas y gemelos digitales. Integración certificada con Universal Robots, ABB, Siemens y Yaskawa. Empresa SAPI de CV.",
   keywords: [

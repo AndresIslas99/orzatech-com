@@ -10,9 +10,10 @@ export default function TrustProjectCard({ project }: { project: Project }) {
       className="trust-card overflow-hidden flex flex-col h-full group"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-trust-surface-2">
+        {/* alt vacío: la imagen es decorativa dentro del link — el h3 ya nombra el caso */}
         <Image
           src={project.image}
-          alt={project.title}
+          alt=""
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -27,7 +28,7 @@ export default function TrustProjectCard({ project }: { project: Project }) {
           <div className="mt-4 grid grid-cols-3 gap-3 pt-4 border-t border-trust-divider">
             {project.results.slice(0, 3).map((r) => (
               <div key={r.label}>
-                <div className="text-base font-semibold text-navy-900 tracking-tight">
+                <div className="text-base data-mono text-navy-900">
                   {r.value}
                 </div>
                 <div className="text-[10.5px] text-ink-400 leading-snug mt-0.5 uppercase tracking-wide">

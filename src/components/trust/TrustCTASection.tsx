@@ -8,7 +8,7 @@ export default function TrustCTASection() {
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <div className="trust-card-elevated p-8 md:p-12 text-center">
           <div className="eyebrow-light mb-4">Hablemos de tu proyecto</div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight max-w-2xl mx-auto leading-tight">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight max-w-2xl mx-auto leading-tight">
             En 30 minutos te decimos si podemos automatizar tu proceso —
             <span className="text-accent-500"> y cuánto cuesta</span>.
           </h2>

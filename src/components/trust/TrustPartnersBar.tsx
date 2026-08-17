@@ -8,7 +8,7 @@ export default function TrustPartnersBar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-10">
           <div className="eyebrow-light mb-3">Partners certificados</div>
-          <h2 className="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-navy-900 tracking-tight">
             Trabajamos con los fabricantes
             <br className="hidden md:block" />{" "}
             que tu equipo ya conoce.

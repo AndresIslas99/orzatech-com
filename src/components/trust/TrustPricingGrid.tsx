@@ -36,7 +36,7 @@ export default function TrustPricingGrid({
             </div>
             <div className="mt-3 flex items-baseline gap-1.5">
               <span
-                className={`text-3xl font-semibold tracking-tight ${
+                className={`text-3xl data-mono ${
                   isHighlighted ? "text-white" : "text-navy-900"
                 }`}
               >

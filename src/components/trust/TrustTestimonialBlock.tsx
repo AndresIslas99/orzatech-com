@@ -9,6 +9,8 @@ export interface TrustTestimonialMetric {
 
 export interface TrustTestimonialProps {
   eyebrow: string;
+  /** Numeración de capítulo ("01 / 04") — narrativa de la home */
+  chapter?: string;
   quote: string;
   pendingReview?: boolean;
   authorName: string;
@@ -22,6 +24,7 @@ export interface TrustTestimonialProps {
 
 export default function TrustTestimonialBlock({
   eyebrow,
+  chapter,
   quote,
   pendingReview,
   authorName,
@@ -33,9 +36,12 @@ export default function TrustTestimonialBlock({
   caseHref,
 }: TrustTestimonialProps) {
   return (
-    <section className="section-light py-20">
+    <section className="section-paper py-20 border-y border-paper-border">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="eyebrow-light">{eyebrow}</div>
+        <div className="flex items-baseline gap-2.5">
+          {chapter && <span className="eyebrow-chapter">{chapter}</span>}
+          <span className="eyebrow-light">{eyebrow}</span>
+        </div>
         <div className="mt-4 grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-7">
             <blockquote className="text-2xl md:text-3xl text-navy-900 leading-snug font-medium">
@@ -58,7 +64,7 @@ export default function TrustTestimonialBlock({
               </div>
             </div>
             <div className="mt-5 flex items-center gap-4 text-sm">
-              <div className="flex items-center gap-0.5 text-amber-500">
+              <div className="flex items-center gap-0.5 text-accent-300">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
@@ -80,7 +86,7 @@ export default function TrustTestimonialBlock({
                   >
                     <div className="text-sm text-ink-500">{m.label}</div>
                     <div
-                      className={`text-2xl font-semibold tracking-tight ${
+                      className={`text-2xl data-mono ${
                         m.highlight ? "text-verified-500" : "text-navy-900"
                       }`}
                     >

@@ -13,7 +13,7 @@ export default function TrustHero() {
             <ShieldCheck className="w-3.5 h-3.5" />
             Empresa constituida · SAPI de CV
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-navy-900 tracking-tight leading-[1.05]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-[-0.02em] leading-[1.04]">
             Automatizamos plantas industriales.{" "}
             <span className="text-accent-500">Sin sorpresas.</span>
           </h1>
@@ -60,7 +60,7 @@ export default function TrustHero() {
             <div className="grid grid-cols-2 gap-5">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <div className="text-3xl font-semibold text-navy-900 tracking-tight">
+                  <div className="text-3xl data-mono text-navy-900">
                     {stat.value}
                   </div>
                   <div className="text-xs text-ink-500 mt-1.5 leading-snug">

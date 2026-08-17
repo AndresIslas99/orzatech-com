@@ -5,7 +5,7 @@ import { CONTACT, WHATSAPP, IMAGES, PULSE } from "@/lib/constants";
 
 export default function TrustFooter() {
   return (
-    <footer className="section-navy">
+    <footer className="section-navy-deep">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-12 gap-10">
         {/* Brand + razón social */}
         <div className="md:col-span-5">
@@ -47,7 +47,7 @@ export default function TrustFooter() {
             <li>
               <a
                 href={`tel:${CONTACT.phone}`}
-                className="flex items-center gap-2 text-white hover:text-accent-500 transition"
+                className="flex items-center gap-2 text-white hover:text-accent-300 transition"
               >
                 <Phone className="w-4 h-4" /> {CONTACT.phoneDisplay}
               </a>
@@ -57,7 +57,7 @@ export default function TrustFooter() {
                 href={WHATSAPP.getUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-white hover:text-accent-500 transition"
+                className="flex items-center gap-2 text-white hover:text-accent-300 transition"
               >
                 <MessageCircle className="w-4 h-4 text-verified-500" />
                 WhatsApp Business
@@ -66,7 +66,7 @@ export default function TrustFooter() {
             <li>
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-2 text-white hover:text-accent-500 transition"
+                className="flex items-center gap-2 text-white hover:text-accent-300 transition"
               >
                 <Mail className="w-4 h-4" /> {CONTACT.email}
               </a>
@@ -102,7 +102,7 @@ export default function TrustFooter() {
             <li>
               <Link
                 href="/contacto"
-                className="inline-flex items-center gap-1 text-accent-500 hover:text-accent-100 transition font-medium pt-1"
+                className="inline-flex items-center gap-1 text-accent-300 hover:text-accent-100 transition font-medium pt-1"
               >
                 Solicitar cotización <ArrowRight className="w-3.5 h-3.5" />
               </Link>

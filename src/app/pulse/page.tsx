@@ -11,21 +11,26 @@ import { PULSE } from "@/lib/constants";
  * El contenido de marketing original sigue en git (commit 9c3bfa7) y sus datos
  * en src/data/pulse.ts, por si se quiere recuperar.
  */
+const baseMetadata = generatePageMetadata({
+  title: "ORZA Pulse · Asistencia técnica con IA para distribuidoras eléctricas",
+  description:
+    "Kioscos con inteligencia artificial que validan normativas CMAA, IEC e IEEE en tiempo real. Ahora en pulse.orzatech.com.",
+  keywords: [
+    "ORZA Pulse",
+    "kiosko IA distribuidoras",
+    "CMAA IEC IEEE",
+    "asistencia técnica IA",
+    "BI distribuidora eléctrica",
+  ],
+  path: "/pulse",
+});
+
+// Canonical Y og:url apuntan al subdominio — deben coincidir para no
+// mandar señales mixtas a los crawlers.
 export const metadata = {
-  ...generatePageMetadata({
-    title: "ORZA Pulse · Asistencia técnica con IA para distribuidoras eléctricas",
-    description:
-      "Kioscos con inteligencia artificial que validan normativas CMAA, IEC e IEEE en tiempo real. Ahora en pulse.orzatech.com.",
-    keywords: [
-      "ORZA Pulse",
-      "kiosko IA distribuidoras",
-      "CMAA IEC IEEE",
-      "asistencia técnica IA",
-      "BI distribuidora eléctrica",
-    ],
-    path: "/pulse",
-  }),
+  ...baseMetadata,
   alternates: { canonical: PULSE.url },
+  openGraph: { ...baseMetadata.openGraph, url: PULSE.url },
 };
 
 export default function PulseRedirect() {
@@ -35,7 +40,7 @@ export default function PulseRedirect() {
       <section className="section-light py-24 md:py-32">
         <div className="max-w-2xl mx-auto px-6 lg:px-8 text-center">
           <div className="badge-accent mb-5">ORZA Pulse</div>
-          <h1 className="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-navy-900 tracking-tight leading-tight">
             ORZA Pulse ahora tiene su propio sitio
           </h1>
           <p className="mt-5 text-base text-ink-500 leading-relaxed">
