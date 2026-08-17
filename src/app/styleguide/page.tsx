@@ -311,7 +311,7 @@ export default function StyleguidePage() {
               {accents.map((c) => <Swatch key={c.name} {...c} />)}
             </div>
             <p className="mt-4 text-sm text-ink-500 max-w-2xl">
-              El naranja se usa <em>una vez por sección</em> para un CTA o un
+              El cobre se usa <em>una vez por sección</em> para un CTA o un
               dato clave. El verde se reserva para badges de verificación,
               uptime, o estado correcto. Rojo solo para errores reales.
             </p>
@@ -374,7 +374,7 @@ export default function StyleguidePage() {
           </div>
           <p className="mt-4 text-sm text-ink-500 max-w-2xl">
             Por sección: <strong className="text-navy-900">1 botón primario</strong>,{" "}
-            <strong className="text-navy-900">1 secundario</strong>. El acento naranja se
+            <strong className="text-navy-900">1 secundario</strong>. El acento cobre se
             usa solo cuando queremos forzar acción inmediata (ej: "Llamar ahora").
           </p>
         </div>
