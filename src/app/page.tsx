@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { generatePageMetadata } from "@/lib/metadata";
+import { PULSE } from "@/lib/constants";
 import { featuredProjects, projects } from "@/data/projects";
 import TrustHero from "@/components/trust/TrustHero";
 import TrustClientBar from "@/components/trust/TrustClientBar";
@@ -88,7 +89,7 @@ export default function Home() {
               eyebrow="Producto · Pulse"
               title="Kiosko de IA para distribuidoras"
               description="ORZA Pulse: cotización técnica automatizada, validación normativa y BI en tiempo real para distribuidoras eléctricas."
-              href="/pulse"
+              href={PULSE.url}
               cta="Conocer ORZA Pulse"
             />
           </div>

@@ -26,6 +26,11 @@ export const FORMSPREE = {
   endpoint: "https://formspree.io/f/mgoolqdw",
 } as const;
 
+/** ORZA Pulse vive en su propio subdominio (app Vite/React en el VPS), no en este sitio. */
+export const PULSE = {
+  url: "https://pulse.orzatech.com",
+} as const;
+
 export const IMAGES = {
   logo: "/images/logo/orza-logo.webp",
   heroVideo: "/images/projects/robotic-arm-video.mp4",

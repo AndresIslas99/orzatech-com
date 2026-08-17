@@ -5,14 +5,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Phone, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
-import { CONTACT, IMAGES } from "@/lib/constants";
+import { CONTACT, IMAGES, PULSE } from "@/lib/constants";
 
 const navItems = [
   {
     label: "Soluciones",
     children: [
       { label: "Software & IA", href: "/software", desc: "Dashboards, telemetría, agentes de IA" },
-      { label: "ORZA Pulse", href: "/pulse", desc: "Kiosko IA para distribuidoras eléctricas" },
+      { label: "ORZA Pulse", href: PULSE.url, desc: "Kiosko IA para distribuidoras eléctricas" },
     ],
   },
   { label: "Industria", href: "/industria" },

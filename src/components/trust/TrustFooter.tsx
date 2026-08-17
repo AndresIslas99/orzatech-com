@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MessageCircle, Mail, MapPin, ArrowRight } from "lucide-react";
-import { CONTACT, WHATSAPP, IMAGES } from "@/lib/constants";
+import { CONTACT, WHATSAPP, IMAGES, PULSE } from "@/lib/constants";
 
 export default function TrustFooter() {
   return (
@@ -86,7 +86,7 @@ export default function TrustFooter() {
             <li><Link href="/industria" className="hover:text-white transition">Automatización industrial</Link></li>
             <li><Link href="/industria" className="hover:text-white transition">Robótica</Link></li>
             <li><Link href="/software" className="hover:text-white transition">Software & IA</Link></li>
-            <li><Link href="/pulse" className="hover:text-white transition">ORZA Pulse</Link></li>
+            <li><Link href={PULSE.url} className="hover:text-white transition">ORZA Pulse</Link></li>
           </ul>
         </div>
 

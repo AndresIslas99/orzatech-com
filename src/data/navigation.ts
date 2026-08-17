@@ -1,4 +1,5 @@
 import { NavItem } from "@/types";
+import { PULSE } from "@/lib/constants";
 
 export const navItems: NavItem[] = [
   {
@@ -6,7 +7,7 @@ export const navItems: NavItem[] = [
     href: "#",
     children: [
       { label: "Software & IA", href: "/software" },
-      { label: "ORZA Pulse", href: "/pulse" },
+      { label: "ORZA Pulse", href: PULSE.url },
     ],
   },
   { label: "Industria", href: "/industria" },
