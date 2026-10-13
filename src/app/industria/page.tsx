@@ -15,7 +15,7 @@ import { ShieldCheck, Wrench, Layers } from "lucide-react";
 export const metadata = generatePageMetadata({
   title: "Automatización industrial certificada",
   description:
-    "Brazos robóticos, AGV/AMR, automatización de grúas y gemelos digitales. Integración certificada con Universal Robots, ABB, Siemens y Yaskawa. Empresa SAPI de CV.",
+    "Brazos robóticos, AGV/AMR, automatización de grúas y gemelos digitales. Integración certificada con Universal Robots, ABB, Siemens y Yaskawa.",
   keywords: [
     "automatización industrial México",
     "robótica industrial",
@@ -64,7 +64,7 @@ const serviceSchema = {
     "Brazos robóticos, AGV/AMR, automatización de grúas y gemelos digitales. Integración certificada con Universal Robots, ABB, Siemens y Yaskawa.",
   provider: {
     "@type": "Organization",
-    name: "Orza Technologies SAPI de CV",
+    name: "Orza Technologies",
     url: SITE.url,
     address: {
       "@type": "PostalAddress",

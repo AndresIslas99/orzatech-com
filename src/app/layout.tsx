@@ -62,7 +62,6 @@ const jsonLdString = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE.name,
-  legalName: "Orza Technologies SAPI de CV",
   url: SITE.url,
   logo: `${SITE.url}/images/logo/orza-logo.webp`,
   image: `${SITE.url}/images/team/founders-notaria.webp`,

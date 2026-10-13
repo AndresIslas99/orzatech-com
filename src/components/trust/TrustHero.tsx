@@ -9,10 +9,6 @@ export default function TrustHero() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-start">
         {/* Left — copy + CTAs */}
         <div className="lg:col-span-7">
-          <div className="badge-verified mb-5">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            Empresa constituida · SAPI de CV
-          </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-[-0.02em] leading-[1.04]">
             Automatizamos plantas industriales.{" "}
             <span className="text-accent-500">Sin sorpresas.</span>

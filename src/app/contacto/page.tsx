@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import { Phone, MessageCircle, Mail, MapPin, Clock, ShieldCheck, Check } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock, Check } from "lucide-react";
 import TrustPageHero from "@/components/trust/TrustPageHero";
 import TrustContactForm from "@/components/trust/TrustContactForm";
 import { CONTACT, WHATSAPP } from "@/lib/constants";
@@ -72,10 +72,6 @@ export default function ContactoPage() {
           {/* Side panel — direct channels */}
           <aside className="lg:col-span-5 space-y-4">
             <div className="trust-card-elevated p-6">
-              <div className="badge-verified mb-3">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                Empresa constituida · SAPI de CV
-              </div>
               <h3 className="text-lg font-semibold text-navy-900">
                 ¿Prefieres llamar o escribir directo?
               </h3>
@@ -121,9 +117,9 @@ export default function ContactoPage() {
               </div>
               <div className="space-y-3 text-sm">
                 <div>
-                  <div className="text-ink-400 text-xs">Razón social</div>
+                  <div className="text-ink-400 text-xs">Marca</div>
                   <div className="text-navy-900 font-medium">
-                    Orza Technologies SAPI de CV
+                    Orza Technologies
                   </div>
                 </div>
                 <div>

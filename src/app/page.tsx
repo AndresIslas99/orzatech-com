@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { generatePageMetadata } from "@/lib/metadata";
 import { PULSE } from "@/lib/constants";
 import { featuredProjects, projects } from "@/data/projects";
@@ -15,7 +15,7 @@ import TrustCTASection from "@/components/trust/TrustCTASection";
 export const metadata = generatePageMetadata({
   title: "Automatización Industrial Confiable",
   description:
-    "Automatización industrial, robótica y software de visibilidad operativa para empresas en México, US y LATAM. Cotización formal en menos de 48 horas. Empresa SAPI de CV.",
+    "Automatización industrial, robótica y software de visibilidad operativa para empresas en México, US y LATAM. Cotización formal en menos de 48 horas.",
   keywords: [
     "automatización industrial México",
     "robótica industrial",
@@ -140,7 +140,7 @@ export default function Home() {
               <span className="eyebrow-light">El equipo detrás de Orza</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-extrabold text-navy-900 tracking-tight max-w-lg">
-              Tres socios firmando la constitución de Orza Technologies ante notario.
+              Los tres socios fundadores de Orza Technologies.
             </h2>
             <p className="mt-4 text-base text-ink-500 leading-relaxed max-w-lg">
               No somos una agencia ni un intermediario. Cuando contratas con
@@ -150,17 +150,13 @@ export default function Home() {
               <Link href="/nosotros" className="btn-primary">
                 Conoce al equipo <ArrowRight className="w-4 h-4" />
               </Link>
-              <div className="badge-verified self-center">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                SAPI de CV constituida
-              </div>
             </div>
           </div>
           <figure className="lg:col-span-5 order-1 lg:order-2 trust-card-elevated overflow-hidden">
             <div className="relative aspect-[4/3]">
               <Image
                 src="/images/team/founders-square.webp"
-                alt="Los tres socios fundadores de Orza Technologies firmando ante notario"
+                alt="Los tres socios fundadores de Orza Technologies"
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 40vw, 100vw"

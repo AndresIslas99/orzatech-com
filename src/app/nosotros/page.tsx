@@ -83,7 +83,6 @@ export default function NosotrosPage() {
         primaryCta={{ label: "Hablar con el equipo", href: "/contacto" }}
         secondaryCta={{ label: "Ver casos", href: "/proyectos" }}
         trustItems={[
-          { label: "Empresa SAPI de CV constituida" },
           { label: "Equipo dedicado en CDMX" },
         ]}
       />
@@ -119,7 +118,7 @@ export default function NosotrosPage() {
           <TrustSectionHeader
             eyebrow="El equipo fundador"
             title="Tres socios. Una sola firma."
-            subtitle="Foto el día que constituimos Orza Technologies SAPI de CV ante notario. Si quieres conocer a alguno en específico, escríbenos."
+            subtitle="Si quieres conocer a alguno en específico, escríbenos."
             align="left"
           />
           <div className="grid lg:grid-cols-12 gap-8 items-start">
@@ -127,7 +126,7 @@ export default function NosotrosPage() {
               <div className="relative aspect-[4/3] bg-trust-surface-2">
                 <Image
                   src="/images/team/founders-notaria.webp"
-                  alt="Andrés Islas, Victor Enriques y Alan Davila — los tres socios fundadores de Orza Technologies firmando la constitución de la empresa ante notario en Ciudad de México"
+                  alt="Andrés Islas, Victor Enriques y Alan Davila — los tres socios fundadores de Orza Technologies, en Ciudad de México"
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 60vw, 100vw"
@@ -135,7 +134,7 @@ export default function NosotrosPage() {
                 />
               </div>
               <figcaption className="px-5 py-4 text-xs text-ink-400 font-mono uppercase tracking-widest">
-                Constitución ante notario · CDMX · 2025
+                Socios fundadores · CDMX
               </figcaption>
             </figure>
             <div className="lg:col-span-4 space-y-4">
@@ -247,9 +246,9 @@ export default function NosotrosPage() {
             </div>
             <div className="grid sm:grid-cols-2 gap-5 text-sm">
               <div>
-                <div className="text-ink-400 text-xs uppercase tracking-wider">Razón social</div>
+                <div className="text-ink-400 text-xs uppercase tracking-wider">Marca</div>
                 <div className="text-navy-900 font-medium mt-1">
-                  Orza Technologies SAPI de CV
+                  Orza Technologies
                 </div>
               </div>
               <div>

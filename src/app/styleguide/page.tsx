@@ -122,7 +122,7 @@ export default function StyleguidePage() {
           <div className="lg:col-span-7">
             <div className="badge-verified mb-5">
               <ShieldCheck className="w-3.5 h-3.5" />
-              Empresa constituida · SAPI de CV
+              Equipo en CDMX
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navy-900 tracking-tight leading-[1.05]">
               Automatizamos plantas industriales.{" "}
@@ -429,7 +429,7 @@ export default function StyleguidePage() {
               Unidos y Latinoamérica.
             </p>
             <div className="mt-6 space-y-2 text-sm text-navy-100">
-              <div>Razón social: <span className="text-white">Orza Technologies SAPI de CV</span></div>
+              
               <div>RFC: <span className="text-navy-300">[en proceso de constitución fiscal]</span></div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" /> Ciudad de México, México
@@ -475,7 +475,7 @@ export default function StyleguidePage() {
 
         <div className="border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-wrap items-center justify-between gap-4 text-xs text-navy-300">
-            <div>© 2026 Orza Technologies SAPI de CV. Todos los derechos reservados.</div>
+            <div>© 2026 Orza Technologies. Todos los derechos reservados.</div>
             <div className="flex items-center gap-5">
               <a className="hover:text-white">Aviso de privacidad</a>
               <a className="hover:text-white">Términos</a>

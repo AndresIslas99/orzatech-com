@@ -20,7 +20,7 @@ import TrustCTASection from "@/components/trust/TrustCTASection";
 export const metadata = generatePageMetadata({
   title: "Software & IA industrial · Visibilidad operativa real",
   description:
-    "Dashboards en tiempo real, telemetría industrial, agentes de IA y CRM automatizado. Implementación en menos de 30 días con precios transparentes. Empresa SAPI de CV.",
+    "Dashboards en tiempo real, telemetría industrial, agentes de IA y CRM automatizado. Implementación en menos de 30 días con precios transparentes.",
   keywords: [
     "software industrial México",
     "dashboards tiempo real",
@@ -43,7 +43,7 @@ const serviceSchema = {
     "Dashboards en tiempo real, telemetría industrial, agentes de IA por WhatsApp y CRM automatizado. Implementación en menos de 30 días con precios públicos.",
   provider: {
     "@type": "Organization",
-    name: "Orza Technologies SAPI de CV",
+    name: "Orza Technologies",
     url: SITE.url,
   },
   areaServed: ["MX", "US", "LATAM"],

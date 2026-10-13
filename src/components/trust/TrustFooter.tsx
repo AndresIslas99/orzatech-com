@@ -7,7 +7,7 @@ export default function TrustFooter() {
   return (
     <footer className="section-navy-deep">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-12 gap-10">
-        {/* Brand + razón social */}
+        {/* Brand */}
         <div className="md:col-span-5">
           <Link href="/" className="flex items-center gap-3 mb-5" aria-label="Orza Technologies — inicio">
             <div className="w-11 h-11 rounded-md bg-white p-1.5 flex items-center justify-center">
@@ -27,10 +27,6 @@ export default function TrustFooter() {
             Unidos y Latinoamérica.
           </p>
           <div className="mt-6 space-y-2 text-sm text-navy-100">
-            <div>
-              <span className="text-navy-300">Razón social:</span>{" "}
-              <span className="text-white">Orza Technologies SAPI de CV</span>
-            </div>
             <div className="flex items-center gap-2 pt-1">
               <MapPin className="w-4 h-4 text-navy-300" />
               {CONTACT.location}
@@ -113,7 +109,7 @@ export default function TrustFooter() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-wrap items-center justify-between gap-4 text-xs text-navy-300">
-          <div>© 2026 Orza Technologies SAPI de CV. Todos los derechos reservados.</div>
+          <div>© 2026 Orza Technologies. Todos los derechos reservados.</div>
           <div className="flex items-center gap-5">
             <a className="hover:text-white transition">Aviso de privacidad</a>
             <a className="hover:text-white transition">Términos</a>

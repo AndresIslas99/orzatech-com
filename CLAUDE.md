@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Next.js 16 multi-page site for **Orza Technologies SAPI de CV** — industrial automation, robotics, and AI solutions for industrial buyers in MX, US and LATAM. Trust-first design ("Industrial mexicano confiable" — light theme, navy + copper + warm paper, sober B2B aesthetic).
+Next.js 16 multi-page site for **Orza Technologies** — industrial automation, robotics, and AI solutions for industrial buyers in MX, US and LATAM. Trust-first design ("Industrial mexicano confiable" — light theme, navy + copper + warm paper, sober B2B aesthetic).
 
 **Live site:** https://orzatech.com (deployed via GitHub Pages from this repo's `main` branch)
 
@@ -73,7 +73,7 @@ npm run build && npx serve out -p 3000
 All page-level building blocks. Light theme. Server components unless marked.
 
 - **TrustNavbar** (client) — sticky white navbar, logo monogram, dropdown Soluciones, phone visible md+, "Solicitar cotización" CTA, mobile drawer
-- **TrustFooter** — navy footer with razón social, RFC placeholder, 3 contact channels, hours, legal links
+- **TrustFooter** — navy footer with 3 contact channels, hours, legal links
 - **TrustHero** — home hero (badge + title + dual CTAs + right trust panel with stats from data)
 - **TrustPageHero** — vertical-page hero (eyebrow + title + description + CTAs + trust items + phone)
 - **TrustClientBar** — 5 client logos in grayscale row
@@ -154,9 +154,9 @@ Radius:   cards 12/16 · buttons 10
 - One primary CTA per section. Copper accent appears max once per section.
 - Home sections carry chapter numbering ("01 / 04" in .eyebrow-chapter mono) — home only; interior pages use plain eyebrows.
 - Stat/metric values use .data-mono (IBM Plex Mono), never display font.
-- Trust signals visible above fold (badge SAPI, stats, phone, location).
+- Trust signals visible above fold (stats, phone, location).
 - Real data only — testimonials with real names, metrics, and `pendingReview` flag if quote not yet validated by client.
-- Footer is heavy — razón social, RFC, location, 3 contact channels, hours, legal.
+- Footer is heavy — location, 3 contact channels, hours, legal.
 
 ## Config (`next.config.ts`)
 
